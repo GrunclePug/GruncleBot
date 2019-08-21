@@ -1,0 +1,32 @@
+package com.grunclepug.grunclebot.commands;
+
+import com.grunclepug.grunclebot.core.Main;
+
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.core.hooks.ListenerAdapter;
+
+
+public class Roll extends ListenerAdapter
+{
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event)
+    {
+        String user = event.getAuthor().getName();
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
+
+        //Roll Command
+        if(args[0].equalsIgnoreCase(Main.prefix + "roll"))
+        {
+            int sides = Integer.parseInt(args[1]); // how many sides on the die?
+            int roll = (int) (Math.random() * sides) + 1;
+
+            EmbedBuilder builder = new EmbedBuilder();
+            builder.setDescription("<:d20:580227230278615042> " + user + " rolled a D" + sides + " and got: " + roll + "!")
+                    .setColor(0x58FA58);
+
+            event.getChannel().sendTyping().queue();
+            event.getChannel().sendMessage(builder.build()).queue();
+            builder.clear();
+        }
+    }
+}

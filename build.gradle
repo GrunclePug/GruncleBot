@@ -1,0 +1,29 @@
+plugins {
+    id'application'
+    id'com.github.johnrengelman.shadow' version '4.0.4'
+}
+
+mainClassName = 'com.grunclepug.grunclebot.core.Main'
+
+version '1.0'
+def jdaVersion = '3.8.3_463'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "net.dv8tion:JDA:$jdaVersion"
+    compile 'org.json:json:20170516'
+    compile 'com.github.natanbc:reliqua:2.3.2'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'com.google.code.findbugs:jsr305:3.0.2'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile "net.dean.jraw:JRAW:1.1.0"
+    compile 'javax.json:javax.json-api:1.0'
+}
+
+compileJava.options.encoding = 'UTF-8'
