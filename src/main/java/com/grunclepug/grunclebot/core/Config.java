@@ -10,34 +10,32 @@ import java.io.IOException;
  * @author  BCIT_summercamp_2019
  * @version Stage 4
  */
-public class Token
+public class Config
 {
     //Variables
-    private static final String fileName = "token.txt";
-    private static String token;
+    private static final String fileName = "config.txt";
+    public static String token;
+    public static String prefix;
 
     /**
      * Constructor
      */
-    public Token()
+    public Config()
     {
-
+        readFile();
     }
 
     /**
      * Method to read the file
      */
-    public static String getToken()
+    public static void readFile()
     {
         try
         {
-            // create a Buffered Reader object instance with a FileReader
             BufferedReader br;
             br = new BufferedReader(new FileReader(fileName));
-            // read the first line from the text file
-            token = br.readLine();
-            System.out.println("token: " + token);
-            // close file stream
+            token = br.readLine().substring(6);
+            prefix = br.readLine().substring(7);
             br.close();
         }
 
@@ -51,7 +49,15 @@ public class Token
         {
             ioe.printStackTrace();
         }
+    }
 
+    public static String getToken()
+    {
         return token;
+    }
+
+    public static String getPrefix()
+    {
+        return prefix;
     }
 }

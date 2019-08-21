@@ -12,14 +12,15 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class Main
 {
+    private static Config c = new Config();
     public static JDA jda;
-    public static String prefix = "g!";
+    public static String prefix = c.getPrefix();
 
     public static void main(String[] args) throws LoginException
     {
-        jda = new JDABuilder(AccountType.BOT).setToken(Token.getToken()).build();
+        jda = new JDABuilder(AccountType.BOT).setToken(c.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setGame(Game.watching("g!help | GrunclePug#7015"));
+        jda.getPresence().setGame(Game.watching(c.getPrefix() + "help | GrunclePug#7015"));
 
         jda.addEventListener(new Info());
         jda.addEventListener(new Ping());
