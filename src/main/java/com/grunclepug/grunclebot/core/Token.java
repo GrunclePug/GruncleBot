@@ -10,7 +10,7 @@ import java.io.IOException;
  * @author  BCIT_summercamp_2019
  * @version Stage 4
  */
-public class FileFunctions
+public class Token
 {
     //Variables
     private static final String fileName = "token.txt";
@@ -19,7 +19,7 @@ public class FileFunctions
     /**
      * Constructor
      */
-    public FileFunctions()
+    public Token()
     {
 
     }
@@ -33,19 +33,12 @@ public class FileFunctions
         {
             // create a Buffered Reader object instance with a FileReader
             BufferedReader br;
-            if((fileName!= null) && (fileName.length() > 0))
-            {
-                br = new BufferedReader(new FileReader(fileName));
-                // read the first line from the text file
-                token = br.readLine();
-
-                // close file stream
-                br.close();
-            }
-            else
-            {
-                System.out.println("Please enter a valid file name.");
-            }
+            br = new BufferedReader(new FileReader(fileName));
+            // read the first line from the text file
+            token = br.readLine();
+            System.out.println("token: " + token);
+            // close file stream
+            br.close();
         }
 
         // handle exceptions
