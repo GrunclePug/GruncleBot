@@ -17,7 +17,7 @@ public class Main
 
     public static void main(String[] args) throws LoginException
     {
-        jda = new JDABuilder(AccountType.BOT).setToken("MzkwOTQyODk3NDYzMDk5Mzkz.XM1PdA.liQpP7amcjjChQXsp_Ze1yw95zs").build();
+        jda = new JDABuilder(AccountType.BOT).setToken(FileFunctions.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setGame(Game.watching("g!help | GrunclePug#7015"));
 
