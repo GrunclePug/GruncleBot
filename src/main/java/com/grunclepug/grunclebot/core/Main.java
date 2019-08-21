@@ -48,6 +48,7 @@ public class Main
         jda.addEventListener(new NekoGif());
         jda.addEventListener(new PussyGif());
         jda.addEventListener(new Tiddy());
+        jda.addEventListener(new TiddyGif());
         jda.addEventListener(new Pat());
         jda.addEventListener(new Slap());
         jda.addEventListener(new Hug());
