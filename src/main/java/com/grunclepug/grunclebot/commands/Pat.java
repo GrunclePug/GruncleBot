@@ -1,67 +1,66 @@
 package com.grunclepug.grunclebot.commands;
 
 import com.grunclepug.grunclebot.core.Main;
+import com.grunclepug.grunclebot.core.NekoAPI;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.Objects;
-
-
+/**
+ * Pat Command
+ * @author grunclepug
+ */
 public class Pat extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
-        String user = event.getAuthor().getName();
+        String member = event.getMember().getNickname();
         String[] args = event.getMessage().getContentDisplay().split("\\s+");
 
-        // Pat Command
+        String user = null;
+
+        if(args.length > 2)
+        {
+            for(int i = 1; i < args.length; i++)
+            {
+                user += (" " + args[i]);
+            }
+            user = user.substring(6);
+        }
+        else if(args.length > 1)
+        {
+            user = args[1].substring(1);
+        }
+
+        //Pat Command
         if(args[0].equalsIgnoreCase(Main.prefix + "pat"))
         {
             if(args.length < 2)
             {
-                // Usage
+                //Usage
                 EmbedBuilder builder = new EmbedBuilder();
                 builder.setTitle("Specify a member to head pat")
-                        .setDescription("Usage: `" + Main.prefix + "pat <@user>`")
+                        .setDescription("Usage: '" + Main.prefix + "pat <@user>'")
                         .setColor(0xff3923);
-
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();
                 builder.clear();
             }
             else
             {
-                try
-                {
-                    String url = "https://nekos.life/api/v2/img/pat";
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .build();
-                    Response responses;
-                    responses = client.newCall(request).execute();
+                String url = "https://nekos.life/api/v2/img/pat";
+                String title = (user + ", you got a head pat from " + member);
+                int color = 0x8904B1;
+                EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
-                    String jsonData = responses.body().string();
-                    String content = new JSONObject(Objects.requireNonNull(jsonData)).get("url").toString();
-
-                    EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle(args[1].replaceFirst("@", "") + ", you got a head pat from " + user)
-                            .setImage(content)
-                            .setColor(0x8904B1);
-
-                    event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage(builder.build()).queue();
-                    builder.clear();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                event.getChannel().sendTyping().queue();
+                event.getChannel().sendMessage(builder.build()).queue();
+                builder.clear();
             }
         }
     }

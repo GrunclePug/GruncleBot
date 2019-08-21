@@ -6,29 +6,56 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.exceptions.ErrorResponseException;
 import net.dv8tion.jda.core.managers.GuildController;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import java.util.*;
+import java.util.List;
 
-
+/**
+ * Ban Command
+ * @author grunclepug
+ */
 public class Ban extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
+        String reason = null;
+
+        if(args.length > 3)
+        {
+            for(int i = 2; i < args.length; i++)
+            {
+                reason += (" " + args[i]);
+            }
+            reason = reason.substring(5);
+        }
+        else if(args.length > 2)
+        {
+            reason = args[2];
+        }
+
         //Ban Command
         if(args[0].equalsIgnoreCase(Main.prefix + "ban"))
         {
+            //Member issuing command
             Member member = event.getMember();
+            //Bot issuing command
             Member selfMember = event.getGuild().getSelfMember();
+            //Member being targetted
             List<Member> mentionedMembers = event.getMessage().getMentionedMembers();
             List<User> mentionedUsers = event.getMessage().getMentionedUsers();
             User user = mentionedUsers.get(0);
             Member target = mentionedMembers.get(0);
 
+            //Checks to see if user has permission to ban, is capable of banning target, and bot is capable of banning target
             if(member.hasPermission(Permission.BAN_MEMBERS) && member.canInteract(target) && selfMember.canInteract(target))
             {
                 if (args.length < 2)
@@ -46,15 +73,17 @@ public class Ban extends ListenerAdapter
                   {
                     try
                     {
+                        //Success
                         String _user = target.getEffectiveName();
-                        // Success
-                        String reason = Arrays.toString(args).replace(",", "");
-                        reason = reason.substring(1, reason.length()-1);
                         GuildController gc = event.getGuild().getController();
+                        if(reason == null)
+                        {
+                            reason = "No reason was provided";
+                        }
 
                         EmbedBuilder builder = new EmbedBuilder();
                         builder.setTitle("✅ Successfully banned " + _user)
-                                .setDescription("command: " + reason)
+                                .setDescription("reason: " + reason)
                                 .setColor(0x22ff2a);
 
                         event.getChannel().sendTyping().queue();
@@ -62,12 +91,17 @@ public class Ban extends ListenerAdapter
                         builder.clear();
 
                         String content = reason;
-                        user.openPrivateChannel().queue((channel) ->
+                        try
                         {
-                            channel.sendMessage("You have been banned from: " + event.getGuild().getName() +
-                                    "\nCommand issued: " + content).queue();
-                        });
-
+                            user.openPrivateChannel().queue((channel) ->
+                            {
+                                channel.sendMessage("You have been banned from: " + event.getGuild().getName() +
+                                        "\nreason: " + content).queue();
+                            });
+                        }
+                        catch(ErrorResponseException e)
+                        {
+                        }
 
                         gc.ban(target, 0, reason).queue();
                     } catch (IndexOutOfBoundsException e) {
@@ -80,7 +114,7 @@ public class Ban extends ListenerAdapter
                 // Lack in Perms
                 EmbedBuilder builder = new EmbedBuilder();
                 builder.setTitle("\uD83D\uDED1 You lack the required permissions")
-                        .setDescription("Either you are missing the 'Ban Members' permission\nOr that member cannot be banned")
+                        .setDescription("Either you are missing the 'Ban Members' permission\nor that member cannot be banned")
                         .setColor(0xff3923);
 
                 event.getChannel().sendTyping().queue();

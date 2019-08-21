@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Pussy Gif Command
+ * Tiddy Gif Command
  * @author grunclepug
  */
-public class PussyGif extends ListenerAdapter
+public class TiddyGif extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -21,13 +21,13 @@ public class PussyGif extends ListenerAdapter
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        //Pussy Gif Command
-        if (args[0].equalsIgnoreCase(Main.prefix + "pussygif"))
+        //Tiddy Gif Command
+        if (args[0].equalsIgnoreCase(Main.prefix + "tiddygif") || args[0].equalsIgnoreCase(Main.prefix + "boobgif"))
         {
             if(event.getChannel().isNSFW())
             {
-                String url = "https://nekos.life/api/v2/img/pussy";
-                String title = "*slurp*";
+                String url = "https://nekos.life/api/v2/img/boobs";
+                String title = "tiddy owo";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 

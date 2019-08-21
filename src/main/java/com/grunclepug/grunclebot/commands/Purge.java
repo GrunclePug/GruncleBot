@@ -10,9 +10,16 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import java.util.List;
 
-
+/**
+ * Purge Command
+ * @author grunclepug
+ */
 public class Purge extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -22,7 +29,8 @@ public class Purge extends ListenerAdapter
         {
             if(event.getMessage().getMember().hasPermission(Permission.MESSAGE_MANAGE))
             {
-                if (args.length < 2) {
+                if (args.length < 2)
+                {
                     // Usage
                     EmbedBuilder builder = new EmbedBuilder();
                     builder.setTitle("Specify amount of messages to delete")
@@ -32,8 +40,11 @@ public class Purge extends ListenerAdapter
                     event.getChannel().sendTyping().queue();
                     event.getChannel().sendMessage(builder.build()).queue();
                     builder.clear();
-                } else {
-                    try {
+                }
+                else
+                {
+                    try
+                    {
                         List<Message> messages = event.getChannel().getHistory().retrievePast(Integer.parseInt(args[1])).complete();
                         event.getChannel().deleteMessages(messages).queue();
 
@@ -45,8 +56,11 @@ public class Purge extends ListenerAdapter
                         event.getChannel().sendTyping().queue();
                         event.getChannel().sendMessage(builder.build()).queue();
                         builder.clear();
-                    } catch (IllegalArgumentException e) {
-                        if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
+                    }
+                    catch(IllegalArgumentException e)
+                    {
+                        if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval"))
+                        {
                             // Too many messages
                             EmbedBuilder builder = new EmbedBuilder();
                             builder.setTitle("\uD83D\uDED1 Too many messages selected")
@@ -56,7 +70,9 @@ public class Purge extends ListenerAdapter
                             event.getChannel().sendTyping().queue();
                             event.getChannel().sendMessage(builder.build()).queue();
                             builder.clear();
-                        } else {
+                        }
+                        else
+                        {
                             // Messages too old
                             EmbedBuilder builder = new EmbedBuilder();
                             builder.setTitle("\uD83D\uDED1 Selected messages are too old")

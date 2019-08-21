@@ -6,9 +6,16 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-
+/**
+ * Invite Command
+ * @author grunclepug
+ */
 public class Invite extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");

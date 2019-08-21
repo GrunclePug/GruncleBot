@@ -6,25 +6,28 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-
+/**
+ * Ping Command
+ * @author grunclepug
+ */
 public class Ping extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        // Ping Command
-        if(args[0].equalsIgnoreCase(Main.prefix + "ping"))
+        //Ping Command
+        if(args[0].equalsIgnoreCase(Main.prefix + "test"))
         {
-            long ping;
-
+            long ping = event.getJDA().getPing();
             EmbedBuilder builder = new EmbedBuilder();
-            ping = event.getJDA().getPing();
-            builder.setTitle("PONG!")
-                .setDescription(ping + "ms")
-                .setThumbnail("https://i.imgur.com/pnNPSQN.png")
-                .setColor(0xDC2F43);
-
+            builder.setTitle("Pong! :ping_pong:")
+                    .setDescription("delay: " + ping + " ms")
+                    .setColor(0xFE2E2E);
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();
             builder.clear();

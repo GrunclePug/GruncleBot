@@ -1,83 +1,52 @@
 package com.grunclepug.grunclebot.commands;
 
 import com.grunclepug.grunclebot.core.Main;
+import com.grunclepug.grunclebot.core.NekoAPI;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.Objects;
-
-
+/**
+ * Neko Command
+ * @author grunclepug
+ */
 public class Neko extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        // Neko Command
+        //Neko Command
         if (args[0].equalsIgnoreCase(Main.prefix + "neko"))
         {
             if(event.getChannel().isNSFW())
             {
-                // NSFW Neko
-                try
-                {
-                    String url = "https://nekos.life/api/v2/img/lewd";
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .build();
-                    Response responses;
-                    responses = client.newCall(request).execute();
+                //NSFW Neko
+                String url = "https://nekos.life/api/v2/img/lewd";
+                String title = "lewd neko :O";
+                int color = 0x8904B1;
+                EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
-                    String jsonData = responses.body().string();
-                    String content = new JSONObject(Objects.requireNonNull(jsonData)).get("url").toString();
-
-                    EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle("lewd neko :O")
-                        .setImage(content)
-                        .setColor(0x8904B1);
-
-                    event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage(builder.build()).queue();
-                    builder.clear();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                event.getChannel().sendTyping().queue();
+                event.getChannel().sendMessage(builder.build()).queue();
+                builder.clear();
             }
             else
             {
-                // SFW Neko
-                try
-                {
-                    String url = "https://nekos.life/api/v2/img/neko";
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .build();
-                    Response responses;
-                    responses = client.newCall(request).execute();
+                //SFW Neko
+                String url = "https://nekos.life/api/v2/img/neko";
+                String title = "uwu what's this?";
+                int color = 0x8904B1;
+                EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
-                    String jsonData = responses.body().string();
-
-                    String content = new JSONObject(Objects.requireNonNull(jsonData)).get("url").toString();
-                    EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle("uwu what's this?")
-                        .setImage(content)
-                        .setColor(0x8904B1);
-
-                    event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage(builder.build()).queue();
-                    builder.clear();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                event.getChannel().sendTyping().queue();
+                event.getChannel().sendMessage(builder.build()).queue();
+                builder.clear();
             }
         }
     }

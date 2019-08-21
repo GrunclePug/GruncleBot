@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * This class creates and parses an Arraylist and displays a file
+ * Config Class to read the config.txt
  * @author  BCIT_summercamp_2019
  * @version Stage 4
  */
@@ -39,7 +39,7 @@ public class Config
             br.close();
         }
 
-        // handle exceptions
+        //Handle Exceptions
         catch (FileNotFoundException fnf)
         {
             System.out.println("File not found");
@@ -51,11 +51,19 @@ public class Config
         }
     }
 
+    /**
+     * Accessor for token
+     * @return The bot token
+     */
     public static String getToken()
     {
         return token;
     }
 
+    /**
+     * Accessor for prefix
+     * @return The bot prefix
+     */
     public static String getPrefix()
     {
         return prefix;

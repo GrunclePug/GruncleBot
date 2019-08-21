@@ -8,14 +8,20 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import java.time.LocalDateTime;
 
-
-public class Serverinfo extends ListenerAdapter
+/**
+ * Server Info Command
+ */
+public class ServerInfo extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        // Server Info Command
+        //Server Info Command
         if(args[0].equalsIgnoreCase(Main.prefix + "serverinfo"))
         {
             String guildName = event.getGuild().getName();

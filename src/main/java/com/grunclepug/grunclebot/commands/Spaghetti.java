@@ -11,14 +11,21 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-
+/**
+ * Spaghetti Hentai Command
+ * @author grunclepug
+ */
 public class Spaghetti extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        // Spaghetti Command
+        //Spaghetti Hentai Command
         if (args[0].equalsIgnoreCase(Main.prefix + "spaghetti"))
         {
             try
@@ -28,8 +35,7 @@ public class Spaghetti extends ListenerAdapter
                 Request request = new Request.Builder()
                     .url(url)
                     .build();
-                Response responses;
-                responses = client.newCall(request).execute();
+                Response responses = client.newCall(request).execute();
 
                 String jsonData = responses.body().string();
                 String value = jsonData.substring(jsonData.indexOf("\"url\": \"")+1,

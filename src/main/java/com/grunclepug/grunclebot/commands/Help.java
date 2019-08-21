@@ -6,9 +6,16 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-
+/**
+ * Help Command
+ * @author grunclepug
+ */
 public class Help extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -32,19 +39,20 @@ public class Help extends ListenerAdapter
                             "\n**hug** | hug a user" +
                             "\n**poke** | poke a user" +
                             "\n**slap** | slap a user" +
-                            "\n**roll** | roll a dice `g!roll <number of sides>`", false)
+                            "\n**roll** | roll a dice `" + Main.prefix + "roll <number of sides>`", false)
                 .addField("Staff Commands",
                       "**purge** | Purge x messages, where x is 2-100" +
-                            "\n**ban** | ban a user `g!ban <@user> [reason]`" +
-                            "\n**kick** | kick a user `g!kick <@user> [reason]`", false)
+                            "\n**ban** | ban a user `" + Main.prefix + "ban <@user> [reason]`" +
+                            "\n**kick** | kick a user `" + Main.prefix + "kick <@user> [reason]`", false)
                 .addField("Image Commands | SFW",
                             "**neko** | Post a random neko pic" +
                             "\n**nekogif** | Post a random Neko gif", false)
                 .addField("Image Commands | NSFW",
-                      "\n**neko** | Post a random NSFW neko (requires NSFW channel)" +
+                      "\n**neko** | Post a random NSFW neko pic (requires NSFW channel)" +
                             "\n**nekogif** | Post a random NSFW neko gif (requires NSFW channel)" +
                             "\n**pussygif** | Post a random pussy gif (requires NSFW channel)" +
-                            "\n**boobs** | Post a random boob gif (requires NSFW channel)" +
+                            "\n**tiddy** | Post a random boob pic (requires NSFW channel)" +
+                            "\n**tiddygif** | Post a random boob gif (requires NSFW channel)" +
                             "\n**spaghetti** | excuse me?", false)
                 .setColor(0xFF00FF);
 

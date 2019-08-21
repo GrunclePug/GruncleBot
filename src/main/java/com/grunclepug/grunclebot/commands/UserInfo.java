@@ -3,7 +3,6 @@ package com.grunclepug.grunclebot.commands;
 import com.grunclepug.grunclebot.core.Main;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -11,9 +10,16 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import java.time.LocalDateTime;
 
-
-public class Userinfo extends ListenerAdapter
+/**
+ * User Info Command
+ * @author grunclepug
+ */
+public class UserInfo extends ListenerAdapter
 {
+    /**
+     * Guild Message Received Method
+     * @param event GuildMessageReceivedEvent
+     */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
@@ -35,12 +41,6 @@ public class Userinfo extends ListenerAdapter
                 String _userGuildJoinDate = userGuildJoinDate.substring(0, userGuildJoinDate.indexOf("."));
                 String currentTime = LocalDateTime.now().toString().replace("T", " at ");
                 String _currentTime = currentTime.substring(0, currentTime.indexOf("."));
-
-                //String online = "<:online:574875183349760000> Online";
-                //String away = "<:away:574875237850677268> Away";
-                //String dnd = "<:dnd:574874877744513056> Do Not Disturb";
-                //String offline = "<:offline:574875398714687488> Offline";
-
 
                 int userRoles = event.getGuild().getMember(_user).getRoles().size();
 
@@ -74,7 +74,6 @@ public class Userinfo extends ListenerAdapter
                 String _userGuildJoinDate = userGuildJoinDate.substring(0, userGuildJoinDate.indexOf("."));
                 String currentTime = LocalDateTime.now().toString().replace("T", " at ");
                 String _currentTime = currentTime.substring(0, currentTime.indexOf("."));
-
 
                 int userRoles = user.getGuild().getMember(_user).getRoles().size();
 
