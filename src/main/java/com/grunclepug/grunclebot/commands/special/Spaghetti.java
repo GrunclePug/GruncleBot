@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.commands.special;
 import com.grunclepug.grunclebot.core.Main;
 
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import okhttp3.OkHttpClient;
@@ -28,31 +29,39 @@ public class Spaghetti extends ListenerAdapter
         //Spaghetti Hentai Command
         if (args[0].equalsIgnoreCase(Main.prefix + "spaghetti"))
         {
-            try
+            if(event.getMessage().getMember().hasPermission(Permission.MESSAGE_ATTACH_FILES))
             {
-                String url = "https://reddit.com/r/spaghettihentai/random.json";
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-                Response responses = client.newCall(request).execute();
+                try
+                {
+                    String url = "https://reddit.com/r/spaghettihentai/random.json";
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url(url)
+                            .build();
+                    Response responses = client.newCall(request).execute();
 
-                String jsonData = responses.body().string();
-                String value = jsonData.substring(jsonData.indexOf("\"url\": \"")+1,
-                    jsonData.indexOf("\", \"width\"", jsonData.indexOf("\"")+1));
-                String _value = value.replace("url\": \"", "");
-                String image = _value.replace("amp;", "");
+                    String jsonData = responses.body().string();
+                    String value = jsonData.substring(jsonData.indexOf("\"url\": \"")+1,
+                            jsonData.indexOf("\", \"width\"", jsonData.indexOf("\"")+1));
+                    String _value = value.replace("url\": \"", "");
+                    String image = _value.replace("amp;", "");
 
-                EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("SSSOOOO LLEEEWWWWDDDDD!!")
-                    .setImage(image)
-                    .setColor(0xF9DB72);
+                    EmbedBuilder builder = new EmbedBuilder();
+                    builder.setTitle("SSSOOOO LLEEEWWWWDDDDD!!")
+                            .setImage(image)
+                            .setColor(0xF9DB72);
 
+                    event.getChannel().sendTyping().queue();
+                    event.getChannel().sendMessage(builder.build()).queue();
+                    builder.clear();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
                 event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage(builder.build()).queue();
-                builder.clear();
-            } catch (IOException e) {
-                e.printStackTrace();
+                event.getChannel().sendMessage("Invalid perms. (Requires Permission.MESSAGE_ATTACH_FILES)").queue();
             }
         }
     }
