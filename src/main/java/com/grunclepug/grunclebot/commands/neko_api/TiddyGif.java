@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;
@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Neko Gif Command
+ * Tiddy Gif Command
  * @author grunclepug
  */
-public class NekoGif extends ListenerAdapter
+public class TiddyGif extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -21,14 +21,13 @@ public class NekoGif extends ListenerAdapter
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        //Neko Gif Command
-        if (args[0].equalsIgnoreCase(Main.prefix + "nekogif"))
+        //Tiddy Gif Command
+        if (args[0].equalsIgnoreCase(Main.prefix + "tiddygif") || args[0].equalsIgnoreCase(Main.prefix + "boobgif"))
         {
             if(event.getChannel().isNSFW())
             {
-                //NSFW Neko Gif
-                String url = "https://nekos.life/api/v2/img/nsfw_neko_gif";
-                String title = "SOOO LLEEEWWWWDDDDD!";
+                String url = "https://nekos.life/api/v2/img/boobs";
+                String title = "tiddy owo";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
@@ -38,11 +37,11 @@ public class NekoGif extends ListenerAdapter
             }
             else
             {
-                //SFW Neko Gif
-                String url = "https://nekos.life/api/v2/img/ngif";
-                String title = "cute neko gif owo";
-                int color = 0x8904B1;
-                EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
+                //SFW Channel Error
+                EmbedBuilder builder = new EmbedBuilder();
+                builder.setTitle("\uD83D\uDED1 NSFW Content")
+                        .setDescription("Please enter a NSFW channel to view this content.")
+                        .setColor(0xff3923);
 
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();

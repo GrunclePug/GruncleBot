@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;
@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Pat Command
+ * Hug Command
  * @author grunclepug
  */
-public class Pat extends ListenerAdapter
+public class Hug extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -37,15 +37,15 @@ public class Pat extends ListenerAdapter
             user = args[1].substring(1);
         }
 
-        //Pat Command
-        if(args[0].equalsIgnoreCase(Main.prefix + "pat"))
+        //Hug Command
+        if(args[0].equalsIgnoreCase(Main.prefix + "hug"))
         {
             if(args.length < 2)
             {
                 //Usage
                 EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("Specify a member to head pat")
-                        .setDescription("Usage: '" + Main.prefix + "pat <@user>'")
+                builder.setTitle("Specify a member to hug")
+                        .setDescription("Usage: '" + Main.prefix + " <@user>'")
                         .setColor(0xff3923);
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();
@@ -53,8 +53,8 @@ public class Pat extends ListenerAdapter
             }
             else
             {
-                String url = "https://nekos.life/api/v2/img/pat";
-                String title = (user + ", you got a head pat from " + member);
+                String url = "https://nekos.life/api/v2/img/hug";
+                String title = (user + ", you got a hug from " + member);
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 

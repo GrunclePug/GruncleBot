@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;
@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Tiddy Command
+ * Neko Command
  * @author grunclepug
  */
-public class Tiddy extends ListenerAdapter
+public class Neko extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -21,13 +21,14 @@ public class Tiddy extends ListenerAdapter
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        //Tiddy Command
-        if (args[0].equalsIgnoreCase(Main.prefix + "tiddy") || args[0].equalsIgnoreCase(Main.prefix + "boobs"))
+        //Neko Command
+        if (args[0].equalsIgnoreCase(Main.prefix + "neko"))
         {
             if(event.getChannel().isNSFW())
             {
-                String url = "https://nekos.life/api/v2/img/tits";
-                String title = "tiddy owo";
+                //NSFW Neko
+                String url = "https://nekos.life/api/v2/img/lewd";
+                String title = "lewd neko :O";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
@@ -37,11 +38,11 @@ public class Tiddy extends ListenerAdapter
             }
             else
             {
-                //SFW Channel Error
-                EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("\uD83D\uDED1 NSFW Content")
-                    .setDescription("Please enter a NSFW channel to view this content.")
-                    .setColor(0xff3923);
+                //SFW Neko
+                String url = "https://nekos.life/api/v2/img/neko";
+                String title = "uwu what's this?";
+                int color = 0x8904B1;
+                EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();

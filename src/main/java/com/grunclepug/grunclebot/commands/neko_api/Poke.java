@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;

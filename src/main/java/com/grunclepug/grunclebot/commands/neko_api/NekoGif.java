@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;
@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Neko Command
+ * Neko Gif Command
  * @author grunclepug
  */
-public class Neko extends ListenerAdapter
+public class NekoGif extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -21,14 +21,14 @@ public class Neko extends ListenerAdapter
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        //Neko Command
-        if (args[0].equalsIgnoreCase(Main.prefix + "neko"))
+        //Neko Gif Command
+        if (args[0].equalsIgnoreCase(Main.prefix + "nekogif"))
         {
             if(event.getChannel().isNSFW())
             {
-                //NSFW Neko
-                String url = "https://nekos.life/api/v2/img/lewd";
-                String title = "lewd neko :O";
+                //NSFW Neko Gif
+                String url = "https://nekos.life/api/v2/img/nsfw_neko_gif";
+                String title = "SOOO LLEEEWWWWDDDDD!";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
@@ -38,9 +38,9 @@ public class Neko extends ListenerAdapter
             }
             else
             {
-                //SFW Neko
-                String url = "https://nekos.life/api/v2/img/neko";
-                String title = "uwu what's this?";
+                //SFW Neko Gif
+                String url = "https://nekos.life/api/v2/img/ngif";
+                String title = "cute neko gif owo";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 

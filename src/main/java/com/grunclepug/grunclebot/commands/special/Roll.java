@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.special;
 
 import com.grunclepug.grunclebot.core.Main;
 

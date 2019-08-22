@@ -2,7 +2,14 @@ package com.grunclepug.grunclebot.core;
 
 import javax.security.auth.login.LoginException;
 
-import com.grunclepug.grunclebot.commands.*;
+import com.grunclepug.grunclebot.commands.general.*;
+import com.grunclepug.grunclebot.commands.neko_api.*;
+import com.grunclepug.grunclebot.commands.staff.Ban;
+import com.grunclepug.grunclebot.commands.staff.Kick;
+import com.grunclepug.grunclebot.commands.staff.Purge;
+import com.grunclepug.grunclebot.commands.special.Roll;
+import com.grunclepug.grunclebot.commands.special.Spaghetti;
+import com.grunclepug.grunclebot.resources.music.Music;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -37,6 +44,9 @@ public class Main
         jda.addEventListener(new UserInfo());
         jda.addEventListener(new Ping());
         jda.addEventListener(new Invite());
+
+        //Music
+        jda.addEventListener(new Music());
 
         //Staff
         jda.addEventListener(new Purge());

@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.general;
 
 import com.grunclepug.grunclebot.core.Main;
 
@@ -7,10 +7,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Ping Command
+ * Invite Command
  * @author grunclepug
  */
-public class Ping extends ListenerAdapter
+public class Invite extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -20,14 +20,14 @@ public class Ping extends ListenerAdapter
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        //Ping Command
-        if(args[0].equalsIgnoreCase(Main.prefix + "test"))
+        // Invite Command
+        if(args[0].equalsIgnoreCase(Main.prefix + "invite"))
         {
-            long ping = event.getJDA().getPing();
             EmbedBuilder builder = new EmbedBuilder();
-            builder.setTitle("Pong! :ping_pong:")
-                    .setDescription("delay: " + ping + " ms")
-                    .setColor(0xFE2E2E);
+            builder.setTitle("Invite GruncleBot to your server: <:grunclebot:574337320552103951>")
+                .setDescription("[Click here](https://discordapp.com/api/oauth2/authorize?client_id=390942897463099393&permissions=2146958583&scope=bot)")
+                .setColor(0x58FAF4);
+
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();
             builder.clear();

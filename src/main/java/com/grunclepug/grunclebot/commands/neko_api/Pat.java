@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.commands;
+package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
 import com.grunclepug.grunclebot.core.NekoAPI;
@@ -8,10 +8,10 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
- * Slap Command
+ * Pat Command
  * @author grunclepug
  */
-public class Slap extends ListenerAdapter
+public class Pat extends ListenerAdapter
 {
     /**
      * Guild Message Received Method
@@ -37,15 +37,15 @@ public class Slap extends ListenerAdapter
             user = args[1].substring(1);
         }
 
-        //Slap Command
-        if(args[0].equalsIgnoreCase(Main.prefix + "slap") || args[0].equalsIgnoreCase(Main.prefix + "smack"))
+        //Pat Command
+        if(args[0].equalsIgnoreCase(Main.prefix + "pat"))
         {
             if(args.length < 2)
             {
                 //Usage
                 EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("Specify a member to slap")
-                        .setDescription("Usage: '" + Main.prefix + "slap <@user>'\nalias: smack")
+                builder.setTitle("Specify a member to head pat")
+                        .setDescription("Usage: '" + Main.prefix + "pat <@user>'")
                         .setColor(0xff3923);
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();
@@ -53,8 +53,8 @@ public class Slap extends ListenerAdapter
             }
             else
             {
-                String url = "https://nekos.life/api/v2/img/slap";
-                String title = (user + ", you got slapped by " + member);
+                String url = "https://nekos.life/api/v2/img/pat";
+                String title = (user + ", you got a head pat from " + member);
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
