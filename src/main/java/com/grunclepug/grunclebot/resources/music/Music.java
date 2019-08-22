@@ -142,7 +142,8 @@ public class Music extends ListenerAdapter {
              * Method for no song found
              */
             public void noMatches() {
-                channel.sendMessage("No results for: " + trackUrl).queue();
+                //channel.sendMessage("No results for: " + trackUrl).queue();
+                channel.sendMessage("Search feature coming soon.").queue();
             }
 
             @Override

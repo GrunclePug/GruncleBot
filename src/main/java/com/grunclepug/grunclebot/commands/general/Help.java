@@ -40,6 +40,10 @@ public class Help extends ListenerAdapter
                             "\n**poke** | poke a user" +
                             "\n**slap** | slap a user" +
                             "\n**roll** | roll a dice `" + Main.prefix + "roll <number of sides>`", false)
+                .addField("Music Commands",
+                      "**play** | play song '" + Main.prefix + "play [song]" +
+                            "\n**skip** | skip song" +
+                            "\n**stop** | stop music", false)
                 .addField("Staff Commands",
                       "**purge** | Purge x messages, where x is 2-100" +
                             "\n**ban** | ban a user `" + Main.prefix + "ban <@user> [reason]`" +
