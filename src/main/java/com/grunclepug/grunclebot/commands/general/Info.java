@@ -32,7 +32,7 @@ public class Info extends ListenerAdapter
                 .addField("・Description", "Multistage aerobic capacity test that progressively gets more difficult as it continues.", false)
                 .addField("・Date Created", "May 03 2019", false)
                 .addField("・Honorable Mentions", "<@!316636759901470720> (Bullfrog098)", false)
-                .addField("・Website", "http://grunclepug.com", false)
+                .addField("・Website", "https://grunclepug.com", false)
                 .setFooter("Created by GrunclePug", "https://i.imgur.com/mK2zlbr.png")
                 .setColor(0xFF00FF);
 
