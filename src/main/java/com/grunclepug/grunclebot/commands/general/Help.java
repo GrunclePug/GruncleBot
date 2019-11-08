@@ -57,6 +57,8 @@ public class Help extends ListenerAdapter
                             "\n**pussygif** | Post a random pussy gif (requires NSFW channel)" +
                             "\n**tiddy** | Post a random boob pic (requires NSFW channel)" +
                             "\n**tiddygif** | Post a random boob gif (requires NSFW channel)" +
+                            "\n**hentai** | Post a random hentai pic (requires NSFW channel)" +
+                            "\n**hentaigif** | Post a random hentai gif (requires NSFW channel)" +
                             "\n**spaghetti** | excuse me?", false)
                 .setColor(0xFF00FF);
 

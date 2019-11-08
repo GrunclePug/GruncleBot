@@ -4,11 +4,8 @@ import javax.security.auth.login.LoginException;
 
 import com.grunclepug.grunclebot.commands.general.*;
 import com.grunclepug.grunclebot.commands.neko_api.*;
-import com.grunclepug.grunclebot.commands.staff.Ban;
-import com.grunclepug.grunclebot.commands.staff.Kick;
-import com.grunclepug.grunclebot.commands.staff.Purge;
-import com.grunclepug.grunclebot.commands.special.Roll;
-import com.grunclepug.grunclebot.commands.special.Spaghetti;
+import com.grunclepug.grunclebot.commands.staff.*;
+import com.grunclepug.grunclebot.commands.special.*;
 import com.grunclepug.grunclebot.resources.music.Music;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -59,6 +56,8 @@ public class Main
         jda.addEventListener(new PussyGif());
         jda.addEventListener(new Tiddy());
         jda.addEventListener(new TiddyGif());
+        jda.addEventListener(new Hentai());
+        jda.addEventListener(new HentaiGif());
         jda.addEventListener(new Pat());
         jda.addEventListener(new Slap());
         jda.addEventListener(new Hug());
