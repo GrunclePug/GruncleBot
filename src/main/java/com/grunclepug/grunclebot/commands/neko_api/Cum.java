@@ -22,11 +22,11 @@ public class Cum extends ListenerAdapter
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         //Cum Command
-        if (args[0].equalsIgnoreCase(Main.prefix + "cum_jpg"))
+        if (args[0].equalsIgnoreCase(Main.prefix + "cum"))
         {
             if(event.getChannel().isNSFW())
             {
-                String url = "https://nekos.life/api/v2/img/cum";
+                String url = "https://nekos.life/api/v2/img/cum_jpg";
                 String title = "oniichan~ im gonna cum";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
