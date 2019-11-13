@@ -58,6 +58,7 @@ public class Main
         jda.addEventListener(new TiddyGif());
         jda.addEventListener(new Hentai());
         jda.addEventListener(new HentaiGif());
+        jda.addEventListener(new Yuri());
         jda.addEventListener(new Pat());
         jda.addEventListener(new Slap());
         jda.addEventListener(new Hug());
