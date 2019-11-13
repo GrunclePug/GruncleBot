@@ -53,15 +53,21 @@ public class Main
         //Neko API
         jda.addEventListener(new Neko());
         jda.addEventListener(new NekoGif());
+        jda.addEventListener(new Kitsune());
+        jda.addEventListener(new Kuni());
         jda.addEventListener(new PussyGif());
         jda.addEventListener(new Tiddy());
         jda.addEventListener(new TiddyGif());
         jda.addEventListener(new Hentai());
         jda.addEventListener(new HentaiGif());
+        jda.addEventListener(new Cum());
+        jda.addEventListener(new CumGif());
         jda.addEventListener(new Yuri());
+
         jda.addEventListener(new Pat());
         jda.addEventListener(new Slap());
         jda.addEventListener(new Hug());
+        jda.addEventListener(new Cuddle());
         jda.addEventListener(new Poke());
 
         //Special
