@@ -45,7 +45,7 @@ public class Hug extends ListenerAdapter
                 //Usage
                 EmbedBuilder builder = new EmbedBuilder();
                 builder.setTitle("Specify a member to hug")
-                        .setDescription("Usage: '" + Main.prefix + " <@user>'")
+                        .setDescription("Usage: '" + Main.prefix + "hug <@user>'")
                         .setColor(0xff3923);
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();

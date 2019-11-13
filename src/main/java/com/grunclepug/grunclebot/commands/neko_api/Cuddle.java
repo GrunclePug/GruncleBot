@@ -45,7 +45,7 @@ public class Cuddle extends ListenerAdapter
                 //Usage
                 EmbedBuilder builder = new EmbedBuilder();
                 builder.setTitle("Specify a member to cuddle")
-                        .setDescription("Usage: '" + Main.prefix + " <@user>'")
+                        .setDescription("Usage: '" + Main.prefix + "cuddle <@user>'")
                         .setColor(0xff3923);
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(builder.build()).queue();
