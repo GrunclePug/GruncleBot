@@ -21,7 +21,7 @@ public class Ping extends ListenerAdapter
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         //Ping Command
-        if(args[0].equalsIgnoreCase(Main.prefix + "test"))
+        if(args[0].equalsIgnoreCase(Main.prefix + "ping"))
         {
             long ping = event.getJDA().getPing();
             EmbedBuilder builder = new EmbedBuilder();
