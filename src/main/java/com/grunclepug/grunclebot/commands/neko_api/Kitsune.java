@@ -28,7 +28,7 @@ public class Kitsune extends ListenerAdapter
             {
                 //NSFW Kitsune
                 String url = "https://nekos.life/api/v2/img/lewdk";
-                String title = "lewd neko :O";
+                String title = "lewd Kitsune :O";
                 int color = 0x8904B1;
                 EmbedBuilder builder = new NekoAPI().getEmbed(url, title, color);
 
