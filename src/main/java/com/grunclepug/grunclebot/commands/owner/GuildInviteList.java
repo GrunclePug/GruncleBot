@@ -37,10 +37,19 @@ public class GuildInviteList extends ListenerAdapter
             ArrayList<Guild> guilds = new ArrayList<>(event.getJDA().getGuilds());
             ArrayList<String> formattedGuilds = new ArrayList<>();
             String guildList = "";
+            String inv = "";
 
             for(int i = 0; i < guilds.size(); i++)
             {
-                formattedGuilds.add(i, "\nGuild: **" + guilds.get(i).getName() + "**\nInvite: " + guilds.get(i).getInvites().complete().get(0) + "\nUsers: " + guilds.get(i).getMembers().size());
+                try
+                {
+                    inv = guilds.get(i).getInvites().complete().get(0).getCode();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace(System.err);
+                }
+                formattedGuilds.add(i, "\nGuild: **" + guilds.get(i).getName() + "**\nInvite: " + inv + "\nUsers: " + guilds.get(i).getMembers().size());
                 guildList += formattedGuilds.get(i);
             }
 
