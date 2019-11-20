@@ -31,7 +31,7 @@ public class FileInteraction
                 //Loop until all lines are read
                 while (fileRead != null)
                 {
-                    String[] tokenize = fileRead.split(":");
+                    String[] tokenize = fileRead.split("\\|");
 
                     if(tokenize.length == 3)
                     {
@@ -76,27 +76,41 @@ public class FileInteraction
     {
         ArrayList<Person> people = readFile(fileName);
         ArrayList<String> formattedPeople = new ArrayList<>();
+        ArrayList<String> userIDs = new ArrayList<>();
         String newContent = "";
 
-        if(people.size() > 0)
+        for(Person p : people)
+        {
+            userIDs.add(p.getId());
+        }
+
+        if(userIDs.contains(userID))
         {
             for(int i = 0; i < people.size(); i++)
             {
                 if(people.get(i).getId().equals(userID))
                 {
                     people.get(i).setAfk(afk).setContent(content);
-                    if(people.get(i).isAfk())
-                    {
-                        formattedPeople.add(i, people.get(i).getId() + ":" + people.get(i).isAfk() + ":" + people.get(i).getContent() + "\n");
-                        newContent += formattedPeople.get(i);
-                    }
+                }
+                if(people.get(i).isAfk())
+                {
+                    formattedPeople.add(people.get(i).getId() + "|" + people.get(i).isAfk() + "|" + people.get(i).getContent() + "\n");
+                    newContent += formattedPeople.get(formattedPeople.size() - 1);
                 }
             }
         }
         else
         {
-            formattedPeople.add(userID + ":" + afk + ":" + content + "\n");
-            newContent += formattedPeople.get(0);
+            if(people.size() > 0)
+            {
+                for(int i = 0; i < people.size(); i++)
+                {
+                    formattedPeople.add(i, people.get(i).getId() + "|" + people.get(i).isAfk() + "|" + people.get(i).getContent() + "\n");
+                    newContent += formattedPeople.get(i);
+                }
+            }
+            formattedPeople.add(userID + "|" + afk + "|" + content + "\n");
+            newContent += formattedPeople.get(formattedPeople.size() - 1);
         }
 
         try
