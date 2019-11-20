@@ -37,6 +37,7 @@ public class Main
 
         //Owner
         jda.addEventListener(new GuildList());
+        jda.addEventListener(new GuildInviteList());
 
         //General Purpose
         jda.addEventListener(new Help());
