@@ -45,6 +45,7 @@ public class Main
         jda.addEventListener(new UserInfo());
         jda.addEventListener(new Ping());
         jda.addEventListener(new Invite());
+        jda.addEventListener(new Afk());
 
         //Music
         jda.addEventListener(new Music());
