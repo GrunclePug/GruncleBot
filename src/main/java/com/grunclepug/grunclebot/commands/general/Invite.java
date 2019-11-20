@@ -24,7 +24,7 @@ public class Invite extends ListenerAdapter
         if(args[0].equalsIgnoreCase(Main.prefix + "invite"))
         {
             EmbedBuilder builder = new EmbedBuilder();
-            builder.setTitle("Invite GruncleBot to your server: <:grunclebot:574337320552103951>")
+            builder.setTitle("Invite GruncleBot to your server: <:grunclebot:646667774126456872>")
                 .setDescription("[Click here](https://discordapp.com/api/oauth2/authorize?client_id=390942897463099393&permissions=2146958583&scope=bot)")
                 .setColor(0x58FAF4);
 

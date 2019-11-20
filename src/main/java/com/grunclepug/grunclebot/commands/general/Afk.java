@@ -5,9 +5,7 @@ import com.grunclepug.grunclebot.core.Main;
 
 import com.grunclepug.grunclebot.core.Person;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -36,7 +34,7 @@ public class Afk extends ListenerAdapter
             {
                 FileInteraction.updateFile(FILE, event.getMessage().getAuthor().getId(), false, null);
                 event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you have been removed from the afk list!").queue();
+                event.getChannel().sendMessage(event.getMessage().getMember().getEffectiveName() + ", you have been removed from the afk list!").queue();
                 break;
             }
         }
@@ -49,8 +47,8 @@ public class Afk extends ListenerAdapter
                 if(event.getMessage().getMentionedMembers().get(i).getUser().getId().equals(people.get(j).getId()))
                 {
                     EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle(event.getMessage().getMentionedMembers().get(i).getEffectiveName() + " is afk.")
-                            .setDescription("Reason: " + people.get(j).getContent())
+                    builder.setTitle("**" + event.getMessage().getMentionedMembers().get(i).getEffectiveName() + "** is currently afk.")
+                            .setDescription("**Reason:** " + people.get(j).getContent())
                             .setColor(0x000000);
                     event.getChannel().sendTyping().queue();
                     event.getChannel().sendMessage(builder.build()).queue();
@@ -80,8 +78,8 @@ public class Afk extends ListenerAdapter
             FileInteraction.updateFile(FILE, member.getUser().getId(), true, reason);
 
             EmbedBuilder builder = new EmbedBuilder();
-            builder.setTitle(member.getEffectiveName() + ", you have been set to afk")
-                    .setDescription("Reason: " + reason)
+            builder.setTitle("**" + member.getEffectiveName() + "**, you have been set to afk")
+                    .setDescription("**Reason:** " + reason)
                     .setColor(0x000000);
 
             event.getChannel().sendTyping().queue();
