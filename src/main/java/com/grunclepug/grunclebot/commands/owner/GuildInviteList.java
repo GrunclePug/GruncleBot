@@ -37,10 +37,10 @@ public class GuildInviteList extends ListenerAdapter
             ArrayList<Guild> guilds = new ArrayList<>(event.getJDA().getGuilds());
             ArrayList<String> formattedGuilds = new ArrayList<>();
             String guildList = "";
-            String inv = "";
 
             for(int i = 0; i < guilds.size(); i++)
             {
+                String inv = "not available";
                 try
                 {
                     inv = guilds.get(i).getInvites().complete().get(0).getCode();
