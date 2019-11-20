@@ -51,7 +51,7 @@ public class MassRole extends ListenerAdapter
                 {
                     for(Member m : members)
                     {
-                        if(!m.getRoles().contains(role) && guild.getSelfMember().canInteract(m))
+                        if(!m.getRoles().contains(role) && guild.getSelfMember().canInteract(m) && !m.getUser().isBot())
                         {
                             guild.getController().addSingleRoleToMember(m, role).queue();
                         }
@@ -64,7 +64,7 @@ public class MassRole extends ListenerAdapter
                 {
                     for(Member m : members)
                     {
-                        if(m.getRoles().contains(role) && guild.getSelfMember().canInteract(m))
+                        if(m.getRoles().contains(role) && guild.getSelfMember().canInteract(m) && !m.getUser().isBot())
                         {
                             guild.getController().removeSingleRoleFromMember(m, role).queue();
                         }
