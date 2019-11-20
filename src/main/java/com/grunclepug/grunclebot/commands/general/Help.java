@@ -33,7 +33,7 @@ public class Help extends ListenerAdapter
                             "\n**userinfo** | See info on a certain user" +
                             "\n**info** | See info on the bot" +
                             "\n**ping** | Checks the delay between you and the bot" +
-                            "\n**afk** | set yourself as afk `" + Main.prefix + "afk <reason>`n" +
+                            "\n**afk** | set yourself as afk `" + Main.prefix + "afk {reason}`" +
                             "\n**invite** | gives you the link to invite the bot", false)
                 .addField("Fun Commands",
                       "**pat** | give headpats to a user uwu" +
@@ -41,17 +41,17 @@ public class Help extends ListenerAdapter
                             "\n**cuddle** | cuddle a user" +
                             "\n**poke** | poke a user" +
                             "\n**slap** | slap a user" +
-                            "\n**roll** | roll a dice `" + Main.prefix + "roll <number of sides>`", false)
+                            "\n**roll** | roll a dice `" + Main.prefix + "roll {number of sides}`", false)
                 .addField("Music Commands",
-                      "**play** | play song '" + Main.prefix + "play [song]" +
+                      "**play** | play song '" + Main.prefix + "play {url}" +
                             "\n**skip** | skip song" +
                             "\n**stop** | stop music", false)
                 .addField("Staff Commands",
                       "**purge** | Purge x messages, where x is 2-100" +
-                            "\n**ban** | ban a user `" + Main.prefix + "ban <@user> [reason]`" +
-                            "\n**kick** | kick a user `" + Main.prefix + "kick <@user> [reason]`" +
-                            "\n**role** | add/remove role from user `" + Main.prefix + "role add <@user>`" +
-                            "\n**massrole** | add/remove role from all users `" + Main.prefix + "massrole add <@user>`", false)
+                            "\n**ban** | ban a user `" + Main.prefix + "ban {@user} {reason}`" +
+                            "\n**kick** | kick a user `" + Main.prefix + "kick {@user} {reason}`" +
+                            "\n**role** | add/remove role from user `" + Main.prefix + "role add {role} {@user}`" +
+                            "\n**massrole** | add/remove role from all users `" + Main.prefix + "massrole add {role}`", false)
                 .addField("Image Commands | SFW",
                       "**neko** | Post a random neko pic" +
                             "\n**nekogif** | Post a random neko gif" +
