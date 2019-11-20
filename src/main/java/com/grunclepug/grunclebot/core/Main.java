@@ -49,6 +49,8 @@ public class Main
         jda.addEventListener(new Purge());
         jda.addEventListener(new Kick());
         jda.addEventListener(new Ban());
+        jda.addEventListener(new Role());
+        jda.addEventListener(new MassRole());
 
         //Neko API
         jda.addEventListener(new Neko());

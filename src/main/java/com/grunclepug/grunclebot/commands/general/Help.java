@@ -48,7 +48,9 @@ public class Help extends ListenerAdapter
                 .addField("Staff Commands",
                       "**purge** | Purge x messages, where x is 2-100" +
                             "\n**ban** | ban a user `" + Main.prefix + "ban <@user> [reason]`" +
-                            "\n**kick** | kick a user `" + Main.prefix + "kick <@user> [reason]`", false)
+                            "\n**kick** | kick a user `" + Main.prefix + "kick <@user> [reason]`" +
+                            "\n**role** | add/remove role from user `" + Main.prefix + "role add <@user>`" +
+                            "\n**massrole** | add/remove role from all users `" + Main.prefix + "massrole add <@user>`", false)
                 .addField("Image Commands | SFW",
                       "**neko** | Post a random neko pic" +
                             "\n**nekogif** | Post a random neko gif" +
