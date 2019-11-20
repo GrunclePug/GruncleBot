@@ -23,10 +23,9 @@ public class Ping extends ListenerAdapter
         //Ping Command
         if(args[0].equalsIgnoreCase(Main.prefix + "ping"))
         {
-            long ping = event.getJDA().getPing();
             EmbedBuilder builder = new EmbedBuilder();
             builder.setTitle("Pong! :ping_pong:")
-                    .setDescription("delay: " + ping + " ms")
+                    .setDescription("delay: " + event.getJDA().getPing() + " ms")
                     .setColor(0xFE2E2E);
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();

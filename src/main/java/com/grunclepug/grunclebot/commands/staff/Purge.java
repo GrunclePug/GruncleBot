@@ -29,19 +29,7 @@ public class Purge extends ListenerAdapter
         {
             if(event.getMessage().getMember().hasPermission(Permission.MESSAGE_MANAGE))
             {
-                if (args.length < 2)
-                {
-                    // Usage
-                    EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle("Specify amount of messages to delete")
-                            .setDescription("Usage: `" + Main.prefix + "purge [# of messages]`")
-                            .setColor(0xff3923);
-
-                    event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage(builder.build()).queue();
-                    builder.clear();
-                }
-                else
+                if (args.length > 1)
                 {
                     try
                     {
@@ -84,6 +72,18 @@ public class Purge extends ListenerAdapter
                             builder.clear();
                         }
                     }
+                }
+                else
+                {
+                    // Usage
+                    EmbedBuilder builder = new EmbedBuilder();
+                    builder.setTitle("Specify amount of messages to delete")
+                            .setDescription("Usage: `" + Main.prefix + "purge [# of messages]`")
+                            .setColor(0xff3923);
+
+                    event.getChannel().sendTyping().queue();
+                    event.getChannel().sendMessage(builder.build()).queue();
+                    builder.clear();
                 }
             }
             else

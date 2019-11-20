@@ -10,8 +10,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import java.io.IOException;
-
 /**
  * Spaghetti Hentai Command
  * @author grunclepug
@@ -56,14 +54,16 @@ public class Spaghetti extends ListenerAdapter
                         event.getChannel().sendTyping().queue();
                         event.getChannel().sendMessage(builder.build()).queue();
                         builder.clear();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace(System.err);
                     }
                 }
                 else
                 {
                     event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage("Invalid perms. (Requires Permission.MESSAGE_ATTACH_FILES)").queue();
+                    event.getChannel().sendMessage("Invalid perms. `Attach Files`").queue();
                 }
             }
             else

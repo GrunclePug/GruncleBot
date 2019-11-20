@@ -42,7 +42,6 @@ public class Role extends ListenerAdapter
             {
                 role = guild.getRolesByName(args[2], true).get(0);
             }
-            int counter = 0;
 
             //Checks to see if user has permission to manage roles, is capable of changing targets roles, and bot is capable of changing targets roles
             if(member.hasPermission(Permission.MANAGE_ROLES) && member.canInteract(target) && guild.getSelfMember().canInteract(target))

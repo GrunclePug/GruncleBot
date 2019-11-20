@@ -7,9 +7,8 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
  * Holder for both the player and a track scheduler for one guild.
  * @author grunclepug
  */
-public class GuildMusicManager {
-
-    //Constants
+public class GuildMusicManager
+{
     public final AudioPlayer player;
     public final TrackScheduler scheduler;
 
@@ -17,7 +16,8 @@ public class GuildMusicManager {
      * Creates a player and a track scheduler.
      * @param manager Audio player manager to use for creating the player.
      */
-    public GuildMusicManager(AudioPlayerManager manager) {
+    public GuildMusicManager(AudioPlayerManager manager)
+    {
         player = manager.createPlayer();
         scheduler = new TrackScheduler(player);
         player.addListener(scheduler);
@@ -26,7 +26,8 @@ public class GuildMusicManager {
     /**
      * @return Wrapper around AudioPlayer to use it as an AudioSendHandler.
      */
-    public AudioPlayerSendHandler getSendHandler() {
+    public AudioPlayerSendHandler getSendHandler()
+    {
         return new AudioPlayerSendHandler(player);
     }
 }

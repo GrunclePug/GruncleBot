@@ -6,7 +6,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -16,13 +15,6 @@ public class NekoAPI
 {
     //Variables
     private EmbedBuilder builder;
-
-    /**
-     * Constructor
-     */
-    public NekoAPI()
-    {
-    }
 
     /**
      * Method to parse Http request and return a custom embed
@@ -49,11 +41,10 @@ public class NekoAPI
                     .setImage(content)
                     .setColor(color);
         }
-        catch (IOException e)
+        catch(Exception e)
         {
-            e.printStackTrace();
+            e.printStackTrace(System.err);
         }
-
         return builder;
     }
 }

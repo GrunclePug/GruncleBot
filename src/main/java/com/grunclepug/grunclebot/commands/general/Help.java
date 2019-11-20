@@ -33,7 +33,7 @@ public class Help extends ListenerAdapter
                             "\n**userinfo** | See info on a certain user" +
                             "\n**info** | See info on the bot" +
                             "\n**ping** | Checks the delay between you and the bot" +
-                            "\n**afk** | set yourself as afk" + Main.prefix + "afk <reason>" +
+                            "\n**afk** | set yourself as afk `" + Main.prefix + "afk <reason>`n" +
                             "\n**invite** | gives you the link to invite the bot", false)
                 .addField("Fun Commands",
                       "**pat** | give headpats to a user uwu" +
@@ -57,18 +57,18 @@ public class Help extends ListenerAdapter
                             "\n**nekogif** | Post a random neko gif" +
                             "\n**kitsune** | Post a random kitsune pic", false)
                 .addField("Image Commands | NSFW",
-                      "\n**neko** | Post a random NSFW neko pic (requires NSFW channel)" +
-                            "\n**nekogif** | Post a random NSFW neko gif (requires NSFW channel)" +
-                            "\n**kitsune** | Post a random NSFW kitsune pic (requires NSFW channel)" +
-                            "\n**kuni** | Post a random NSFW pussy lick gif (requires NSFW channel)" +
-                            "\n**pussygif** | Post a random pussy gif (requires NSFW channel)" +
-                            "\n**tiddy** | Post a random boob pic (requires NSFW channel)" +
-                            "\n**tiddygif** | Post a random boob gif (requires NSFW channel)" +
-                            "\n**hentai** | Post a random hentai pic (requires NSFW channel)" +
-                            "\n**hentaigif** | Post a random hentai gif (requires NSFW channel)" +
-                            "\n**cum** | Post a random cum pic (requires NSFW channel)" +
-                            "\n**cumgif** | Post a random cum gif (requires NSFW channel)" +
-                            "\n**yuri** | Post a random yuri pic (requires NSFW channel)" +
+                      "\n**neko** | Post a random NSFW neko pic" +
+                            "\n**nekogif** | Post a random NSFW neko gif" +
+                            "\n**kitsune** | Post a random NSFW kitsune pic" +
+                            "\n**kuni** | Post a random NSFW pussy lick gif" +
+                            "\n**pussygif** | Post a random pussy gif" +
+                            "\n**tiddy** | Post a random boob pic" +
+                            "\n**tiddygif** | Post a random boob gif" +
+                            "\n**hentai** | Post a random hentai pic" +
+                            "\n**hentaigif** | Post a random hentai gif" +
+                            "\n**cum** | Post a random cum pic" +
+                            "\n**cumgif** | Post a random cum gif" +
+                            "\n**yuri** | Post a random yuri pic" +
                             "\n**spaghetti** | excuse me?", false)
                 .setColor(0xFF00FF);
 

@@ -22,8 +22,8 @@ import java.util.Map;
  * Main Class for music
  * @author grunclepug
  */
-public class Music extends ListenerAdapter {
-
+public class Music extends ListenerAdapter
+{
     private final AudioPlayerManager playerManager;
     private final Map<Long, GuildMusicManager> musicManagers;
     private static VoiceChannel channel;
@@ -31,10 +31,11 @@ public class Music extends ListenerAdapter {
     /**
      * Constructor
      */
-    public Music() {
+    public Music()
+    {
         this.musicManagers = new HashMap<>();
-
         this.playerManager = new DefaultAudioPlayerManager();
+
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
     }
@@ -44,17 +45,17 @@ public class Music extends ListenerAdapter {
      * @param guild Guild to play audio in
      * @return GuildMusicManager to manage the music
      */
-    private synchronized GuildMusicManager getGuildAudioPlayer(Guild guild) {
+    private synchronized GuildMusicManager getGuildAudioPlayer(Guild guild)
+    {
         long guildId = Long.parseLong(guild.getId());
         GuildMusicManager musicManager = musicManagers.get(guildId);
 
-        if (musicManager == null) {
+        if (musicManager == null)
+        {
             musicManager = new GuildMusicManager(playerManager);
             musicManagers.put(guildId, musicManager);
         }
-
         guild.getAudioManager().setSendingHandler(musicManager.getSendHandler());
-
         return musicManager;
     }
 
@@ -63,7 +64,8 @@ public class Music extends ListenerAdapter {
      * Guild Message Received Method
      * @param event GuildMessageReceivedEvent
      */
-    public void onMessageReceived(MessageReceivedEvent event) {
+    public void onMessageReceived(MessageReceivedEvent event)
+    {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         channel = event.getMember().getVoiceState().getChannel();
 
@@ -125,15 +127,15 @@ public class Music extends ListenerAdapter {
              * Takes care of the playlist
              * @param AudioPlaylist
              */
-            public void playlistLoaded(AudioPlaylist playlist) {
+            public void playlistLoaded(AudioPlaylist playlist)
+            {
                 AudioTrack firstTrack = playlist.getSelectedTrack();
 
-                if (firstTrack == null) {
+                if (firstTrack == null)
+                {
                     firstTrack = playlist.getTracks().get(0);
                 }
-
                 channel.sendMessage("Adding to queue: " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
-
                 play(channel.getGuild(), musicManager, firstTrack);
             }
 
@@ -141,7 +143,8 @@ public class Music extends ListenerAdapter {
             /**
              * Method for no song found
              */
-            public void noMatches() {
+            public void noMatches()
+            {
                 //channel.sendMessage("No results for: " + trackUrl).queue();
                 channel.sendMessage("Search feature coming soon.").queue();
             }
@@ -150,7 +153,8 @@ public class Music extends ListenerAdapter {
             /**
              * Method for cannot play
              */
-            public void loadFailed(FriendlyException exception) {
+            public void loadFailed(FriendlyException exception)
+            {
                 channel.sendMessage("Could not play: " + exception.getMessage()).queue();
             }
         });
@@ -162,7 +166,8 @@ public class Music extends ListenerAdapter {
      * @param musicManager Manages the music (GuildMusicManager)
      * @param track The song
      */
-    private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track) {
+    private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track)
+    {
         connectToVoiceChannel(guild.getAudioManager());
         musicManager.scheduler.queue(track);
     }
@@ -171,7 +176,8 @@ public class Music extends ListenerAdapter {
      * Skip method
      * @param channel text channel that user issued command
      */
-    private void skipTrack(TextChannel channel) {
+    private void skipTrack(TextChannel channel)
+    {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
         musicManager.scheduler.nextTrack();
 
@@ -193,8 +199,10 @@ public class Music extends ListenerAdapter {
      * Connect Method
      * @param audioManager AudioManager
      */
-    private static void connectToVoiceChannel(AudioManager audioManager) {
-        if (!audioManager.isConnected() && !audioManager.isAttemptingToConnect()) {
+    private static void connectToVoiceChannel(AudioManager audioManager)
+    {
+        if (!audioManager.isConnected() && !audioManager.isAttemptingToConnect())
+        {
             audioManager.openAudioConnection(channel);
         }
     }
