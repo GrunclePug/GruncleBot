@@ -6,6 +6,7 @@ import com.grunclepug.grunclebot.commands.general.*;
 import com.grunclepug.grunclebot.commands.neko_api.*;
 import com.grunclepug.grunclebot.commands.staff.*;
 import com.grunclepug.grunclebot.commands.special.*;
+import com.grunclepug.grunclebot.commands.owner.*;
 import com.grunclepug.grunclebot.resources.music.Music;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -33,6 +34,9 @@ public class Main
         jda = new JDABuilder(AccountType.BOT).setToken(c.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setGame(Game.watching(c.getPrefix() + "help | GrunclePug#7015"));
+
+        //Owner
+        jda.addEventListener(new GuildList());
 
         //General Purpose
         jda.addEventListener(new Help());
