@@ -19,7 +19,7 @@ public class Cuddle extends ListenerAdapter
      */
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
-        String member = event.getMember().getNickname();
+        String member = event.getMember().getEffectiveName();
         String[] args = event.getMessage().getContentDisplay().split("\\s+");
 
         String user = null;
