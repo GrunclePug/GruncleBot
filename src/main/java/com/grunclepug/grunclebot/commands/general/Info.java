@@ -3,9 +3,13 @@ package com.grunclepug.grunclebot.commands.general;
 import com.grunclepug.grunclebot.core.Main;
 
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+
+import java.util.ArrayList;
 
 /**
  * Info Command
@@ -25,13 +29,19 @@ public class Info extends ListenerAdapter
         if(args[0].equalsIgnoreCase(Main.prefix + "info"))
         {
             Member selfMember = event.getGuild().getSelfMember();
+            ArrayList<Guild> guilds = new ArrayList<>(event.getJDA().getGuilds());
+            ArrayList<User> users = new ArrayList<>(event.getJDA().getUsers());
+
 
             EmbedBuilder builder = new EmbedBuilder();
             builder.setTitle(selfMember.getEffectiveName() + " Information")
                 .setThumbnail(selfMember.getUser().getAvatarUrl())
+                .addField("・About", "Multi-purpose open source Discord bot written in Java", false)
                 .addField("・Description", "Multistage aerobic capacity test that progressively gets more difficult as it continues.", false)
                 .addField("・Date Created", "May 03 2019", false)
                 .addField("・Honorable Mentions", "<@!316636759901470720> (Bullfrog098)", false)
+                .addField("・Guilds", "" + guilds.size(), false)
+                .addField("・Users", "" + users.size(), false)
                 .addField("・Website", "https://grunclepug.com", false)
                 .setFooter("Created by GrunclePug", "https://i.imgur.com/mK2zlbr.png")
                 .setColor(0xFF00FF);
@@ -41,5 +51,4 @@ public class Info extends ListenerAdapter
             builder.clear();
         }
     }
-    //https://i.imgur.com/bfwjiDz.png
 }
