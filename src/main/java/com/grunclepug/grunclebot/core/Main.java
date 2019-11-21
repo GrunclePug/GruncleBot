@@ -2,12 +2,14 @@ package com.grunclepug.grunclebot.core;
 
 import javax.security.auth.login.LoginException;
 
-import com.grunclepug.grunclebot.commands.general.*;
-import com.grunclepug.grunclebot.commands.neko_api.*;
-import com.grunclepug.grunclebot.commands.staff.*;
-import com.grunclepug.grunclebot.commands.special.*;
 import com.grunclepug.grunclebot.commands.owner.*;
+import com.grunclepug.grunclebot.commands.general.*;
+import com.grunclepug.grunclebot.commands.utility.*;
+import com.grunclepug.grunclebot.commands.staff.*;
+import com.grunclepug.grunclebot.commands.neko_api.*;
+import com.grunclepug.grunclebot.commands.special.*;
 import com.grunclepug.grunclebot.resources.music.Music;
+
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -54,6 +56,10 @@ public class Main
         jda.addEventListener(new Invite());
         jda.addEventListener(new Afk());
 
+        //Utility
+        jda.addEventListener(new Avatar());
+        jda.addEventListener(new Enlarge());
+
         //Music
         jda.addEventListener(new Music());
 
@@ -86,6 +92,8 @@ public class Main
 
         //Special
         jda.addEventListener(new Spaghetti());
+        jda.addEventListener(new LampMeme());
+        jda.addEventListener(new JoJoMeme());
         jda.addEventListener(new Roll());
     }
 }

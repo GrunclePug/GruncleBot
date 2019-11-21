@@ -36,6 +36,9 @@ public class Help extends ListenerAdapter
                             "\n**ping** | Checks the delay between you and the bot" +
                             "\n**afk** | set yourself as afk `" + Main.prefix + "afk {reason}`" +
                             "\n**invite** | gives you the link to invite the bot", false)
+                .addField("Utility Commands",
+                      "**enlarge** | enlarge an emote (custom emotes only)" +
+                            "\n**avatar** | get a users avatar", false)
                 .addField("Fun Commands",
                       "**pat** | give headpats to a user uwu" +
                             "\n**hug** | hug a user" +
@@ -56,7 +59,9 @@ public class Help extends ListenerAdapter
                 .addField("Image Commands | SFW",
                       "**neko** | Post a random neko pic" +
                             "\n**nekogif** | Post a random neko gif" +
-                            "\n**kitsune** | Post a random kitsune pic", false)
+                            "\n**kitsune** | Post a random kitsune pic" +
+                            "\n**lampmeme** | Post a random lamp meme" +
+                            "\n**jojomeme** | Post a random jojo meme", false)
                 .addField("Image Commands | NSFW",
                       "\n**neko** | Post a random NSFW neko pic" +
                             "\n**nekogif** | Post a random NSFW neko gif" +
