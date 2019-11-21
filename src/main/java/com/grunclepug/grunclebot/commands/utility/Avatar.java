@@ -36,7 +36,7 @@ public class Avatar extends ListenerAdapter
 
             EmbedBuilder builder = new EmbedBuilder();
             builder.setTitle(member.getEffectiveName() + "'s Avatar")
-                    .setImage(member.getUser().getAvatarUrl())
+                    .setImage(member.getUser().getAvatarUrl() + "?size=2048")
                     .setColor(0x8904B1);
 
             event.getChannel().sendTyping().queue();
