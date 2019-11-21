@@ -28,14 +28,13 @@ public class Info extends ListenerAdapter
         // Info Command
         if(args[0].equalsIgnoreCase(Main.prefix + "info"))
         {
-            Member selfMember = event.getGuild().getSelfMember();
+            Member bot = event.getGuild().getSelfMember();
             ArrayList<Guild> guilds = new ArrayList<>(event.getJDA().getGuilds());
             ArrayList<User> users = new ArrayList<>(event.getJDA().getUsers());
 
-
             EmbedBuilder builder = new EmbedBuilder();
-            builder.setTitle(selfMember.getEffectiveName() + " Information")
-                .setThumbnail(selfMember.getUser().getAvatarUrl())
+            builder.setTitle(bot.getEffectiveName() + " Information")
+                .setThumbnail(bot.getUser().getAvatarUrl())
                 .addField("・About", "Multi-purpose open source Discord bot written in Java", false)
                 .addField("・Description", "Multistage aerobic capacity test that progressively gets more difficult as it continues.", false)
                 .addField("・Date Created", "May 03 2019", false)

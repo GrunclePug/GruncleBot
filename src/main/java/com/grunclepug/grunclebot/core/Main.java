@@ -14,6 +14,8 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
+import java.text.DecimalFormat;
+
 /**
  * Main class for GruncleBot
  * @author grunclepug
@@ -23,6 +25,9 @@ public class Main
     private static Config c = new Config();
     public static JDA jda;
     public static String prefix = c.getPrefix();
+
+    public static DecimalFormat dfOneDecimalPoint = new DecimalFormat("0.0");
+    public static DecimalFormat dfTwoDecimalPoint = new DecimalFormat("0.00");
 
     /**
      * Main Method
@@ -44,6 +49,7 @@ public class Main
         jda.addEventListener(new Info());
         jda.addEventListener(new ServerInfo());
         jda.addEventListener(new UserInfo());
+        jda.addEventListener(new Resources());
         jda.addEventListener(new Ping());
         jda.addEventListener(new Invite());
         jda.addEventListener(new Afk());

@@ -32,6 +32,7 @@ public class Help extends ListenerAdapter
                             "\n**serverinfo** | See info on the current server" +
                             "\n**userinfo** | See info on a certain user" +
                             "\n**info** | See info on the bot" +
+                            "\n**resources** | Check bot system resource usage" +
                             "\n**ping** | Checks the delay between you and the bot" +
                             "\n**afk** | set yourself as afk `" + Main.prefix + "afk {reason}`" +
                             "\n**invite** | gives you the link to invite the bot", false)
