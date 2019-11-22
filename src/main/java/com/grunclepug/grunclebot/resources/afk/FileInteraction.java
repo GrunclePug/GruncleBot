@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.core;
+package com.grunclepug.grunclebot.resources.afk;
 
 import java.io.BufferedReader;
 import java.io.File;

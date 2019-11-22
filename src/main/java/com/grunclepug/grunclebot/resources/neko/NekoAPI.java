@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.core;
+package com.grunclepug.grunclebot.resources.neko;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import okhttp3.OkHttpClient;

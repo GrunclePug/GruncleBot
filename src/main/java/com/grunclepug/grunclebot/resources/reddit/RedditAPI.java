@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.core;
+package com.grunclepug.grunclebot.resources.reddit;
 
 import com.grunclepug.grunclebot.core.Main;
 

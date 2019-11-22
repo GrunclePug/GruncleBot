@@ -1,9 +1,9 @@
 package com.grunclepug.grunclebot.commands.general;
 
-import com.grunclepug.grunclebot.core.FileInteraction;
+import com.grunclepug.grunclebot.resources.afk.FileInteraction;
 import com.grunclepug.grunclebot.core.Main;
 
-import com.grunclepug.grunclebot.core.Person;
+import com.grunclepug.grunclebot.resources.afk.Person;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;

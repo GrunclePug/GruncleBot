@@ -1,7 +1,7 @@
 package com.grunclepug.grunclebot.commands.neko_api;
 
 import com.grunclepug.grunclebot.core.Main;
-import com.grunclepug.grunclebot.core.NekoAPI;
+import com.grunclepug.grunclebot.resources.neko.NekoAPI;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;

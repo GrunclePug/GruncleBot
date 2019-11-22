@@ -2,7 +2,7 @@ package com.grunclepug.grunclebot.commands.special;
 
 import com.grunclepug.grunclebot.core.Main;
 
-import com.grunclepug.grunclebot.core.RedditAPI;
+import com.grunclepug.grunclebot.resources.reddit.RedditAPI;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;

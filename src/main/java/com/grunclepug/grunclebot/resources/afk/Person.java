@@ -1,4 +1,4 @@
-package com.grunclepug.grunclebot.core;
+package com.grunclepug.grunclebot.resources.afk;
 
 public class Person
 {
