@@ -27,7 +27,7 @@ public class Ban extends ListenerAdapter
         if(args[0].equalsIgnoreCase(Main.prefix + "ban"))
         {
             Member member = event.getMessage().getMember();
-            Member target = event.getMessage().getMentionedMembers().get(0);
+            Member target;
             Guild guild = event.getMessage().getGuild();
             Member bot = event.getGuild().getSelfMember();
             String reason = "No reason was provided";
@@ -45,10 +45,11 @@ public class Ban extends ListenerAdapter
                 reason = args[2];
             }
 
-            //Checks to see if user has permission to ban, is capable of banning target, and bot is capable of banning target
-            if(member.hasPermission(Permission.BAN_MEMBERS) && member.canInteract(target) && bot.canInteract(target))
+            if(args.length > 1)
             {
-                if (args.length > 1)
+                target = event.getMessage().getMentionedMembers().get(0);
+                //Checks to see if user has permission to ban, is capable of banning target, and bot is capable of banning target
+                if(member.hasPermission(Permission.BAN_MEMBERS) && member.canInteract(target) && bot.canInteract(target))
                 {
                     try
                     {
@@ -77,10 +78,10 @@ public class Ban extends ListenerAdapter
                 }
                 else
                 {
-                    // Usage
+                    // Lack in Perms
                     EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle("Specify member and reason of ban")
-                            .setDescription("Usage: `" + Main.prefix + "ban [user] [reason]`")
+                    builder.setTitle("\uD83D\uDED1 You lack the required permissions")
+                            .setDescription("Either you are missing the 'Ban Members' permission\nor that member cannot be banned")
                             .setColor(0xff3923);
 
                     event.getChannel().sendTyping().queue();
@@ -90,10 +91,10 @@ public class Ban extends ListenerAdapter
             }
             else
             {
-                // Lack in Perms
+                // Usage
                 EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("\uD83D\uDED1 You lack the required permissions")
-                        .setDescription("Either you are missing the 'Ban Members' permission\nor that member cannot be banned")
+                builder.setTitle("Specify member and reason of ban")
+                        .setDescription("Usage: `" + Main.prefix + "ban {user} {reason}`")
                         .setColor(0xff3923);
 
                 event.getChannel().sendTyping().queue();

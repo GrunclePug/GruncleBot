@@ -27,7 +27,7 @@ public class Kick extends ListenerAdapter
         if(args[0].equalsIgnoreCase(Main.prefix + "kick"))
         {
             Member member = event.getMessage().getMember();
-            Member target = event.getMessage().getMentionedMembers().get(0);
+            Member target;
             Guild guild = event.getMessage().getGuild();
             Member bot = event.getGuild().getSelfMember();
             String reason = "No reason was provided";
@@ -45,10 +45,11 @@ public class Kick extends ListenerAdapter
                 reason = args[2];
             }
 
-            //Checks to see if user has permission to kick, is capable of kicking target, and bot is capable of kicking target
-            if(member.hasPermission(Permission.KICK_MEMBERS) && member.canInteract(target) && bot.canInteract(target))
+            if(args.length > 1)
             {
-                if (args.length > 1)
+                target = event.getMessage().getMentionedMembers().get(0);
+                //Checks to see if user has permission to ban, is capable of banning target, and bot is capable of banning target
+                if(member.hasPermission(Permission.BAN_MEMBERS) && member.canInteract(target) && bot.canInteract(target))
                 {
                     try
                     {
@@ -77,10 +78,10 @@ public class Kick extends ListenerAdapter
                 }
                 else
                 {
-                    // Usage
+                    // Lack in Perms
                     EmbedBuilder builder = new EmbedBuilder();
-                    builder.setTitle("Specify member and reason of kick")
-                            .setDescription("Usage: `" + Main.prefix + "kick [user] [reason]`")
+                    builder.setTitle("\uD83D\uDED1 You lack the required permissions")
+                            .setDescription("Either you are missing the 'Kick Members' permission\nor that member cannot be kicked")
                             .setColor(0xff3923);
 
                     event.getChannel().sendTyping().queue();
@@ -90,10 +91,10 @@ public class Kick extends ListenerAdapter
             }
             else
             {
-                // Lack in Perms
+                // Usage
                 EmbedBuilder builder = new EmbedBuilder();
-                builder.setTitle("\uD83D\uDED1 You lack the required permissions")
-                        .setDescription("Either you are missing the 'Kick Members' permission\nor that member cannot be kicked")
+                builder.setTitle("Specify member and reason of kick")
+                        .setDescription("Usage: `" + Main.prefix + "kick {user} {reason}`")
                         .setColor(0xff3923);
 
                 event.getChannel().sendTyping().queue();
