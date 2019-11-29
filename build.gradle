@@ -3,7 +3,7 @@ plugins {
     id'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
-mainClassName = 'com.grunclepug.grunclebot.core.Main'
+mainClassName = 'com.grunclepug.grunclebot.bot.core.Driver'
 
 version '1.0'
 def jdaVersion = '3.8.3_463'
