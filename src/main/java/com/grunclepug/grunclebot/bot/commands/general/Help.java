@@ -76,6 +76,7 @@ public class Help extends ListenerAdapter
                             "\n**cum** | Post a random cum pic" +
                             "\n**cumgif** | Post a random cum gif" +
                             "\n**yuri** | Post a random yuri pic" +
+                            "\n**feet** | Post a random foot pic" +
                             "\n**spaghetti** | excuse me?", false)
                 .setColor(0xFF00FF);
 

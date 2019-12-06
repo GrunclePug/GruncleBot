@@ -98,6 +98,7 @@ public class Driver
         jda.addEventListener(new Cum());
         jda.addEventListener(new CumGif());
         jda.addEventListener(new Yuri());
+        jda.addEventListener(new Feet());
 
         jda.addEventListener(new Pat());
         jda.addEventListener(new Slap());
