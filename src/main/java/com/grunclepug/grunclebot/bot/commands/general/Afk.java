@@ -43,7 +43,7 @@ public class Afk extends ListenerAdapter
         // Check if member gets pinged
         for(int i = 0; i < event.getMessage().getMentionedMembers().size(); i++)
         {
-            for(int j = 0; j < people.size(); i++)
+            for(int j = 0; j < people.size(); j++)
             {
                 if(event.getMessage().getMentionedMembers().get(i).getUser().getId().equals(people.get(j).getId()))
                 {
