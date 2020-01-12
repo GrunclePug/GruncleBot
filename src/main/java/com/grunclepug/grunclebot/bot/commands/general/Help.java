@@ -42,7 +42,7 @@ public class Help extends ListenerAdapter
                       "**enlarge** | enlarge an emote (custom emotes only)" +
                             "\n**avatar** | get a users avatar", false)
                 .addField("Fun Commands",
-                      "**randomcase | convert user input to random upper/lower case" +
+                      "**randomcase** | convert user input to random upper/lower case" +
                             "\n**pat** | give headpats to a user uwu" +
                             "\n**hug** | hug a user" +
                             "\n**cuddle** | cuddle a user" +
