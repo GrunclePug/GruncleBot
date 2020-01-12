@@ -2,6 +2,7 @@ package com.grunclepug.grunclebot.bot.core;
 
 import javax.security.auth.login.LoginException;
 
+import com.grunclepug.grunclebot.bot.commands.fun.RandomCase;
 import com.grunclepug.grunclebot.bot.commands.owner.*;
 import com.grunclepug.grunclebot.bot.commands.general.*;
 import com.grunclepug.grunclebot.bot.commands.utility.*;
@@ -74,6 +75,9 @@ public class Driver
         jda.addEventListener(new Ping());
         jda.addEventListener(new Invite());
         jda.addEventListener(new Afk());
+
+        //Fun
+        jda.addEventListener(new RandomCase());
 
         //Utility
         jda.addEventListener(new Avatar());
