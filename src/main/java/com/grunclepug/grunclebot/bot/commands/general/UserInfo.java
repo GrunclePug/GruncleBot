@@ -1,7 +1,6 @@
 package com.grunclepug.grunclebot.bot.commands.general;
 
 import com.grunclepug.grunclebot.bot.core.Config;
-import com.grunclepug.grunclebot.bot.core.Driver;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -9,7 +8,8 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * User Info Command
@@ -38,12 +38,7 @@ public class UserInfo extends ListenerAdapter
                 member = event.getMessage().getMember();
             }
 
-            String accountCreationDate = member.getUser().getCreationTime().toLocalDateTime().toString().replace("T", " at ");
-            String formattedAccountCreationDate = accountCreationDate.substring(0, accountCreationDate.indexOf("."));
-            String guildJoinDate = member.getJoinDate().toString().replace("T", " at ");
-            String formattedGuildJoinDate = guildJoinDate.substring(0, accountCreationDate.indexOf("."));
-            String currentTime = LocalDateTime.now().toString().replace("T", " at ");
-            String formattedCurrentTime = currentTime.substring(0, currentTime.indexOf("."));
+            Date date = new Date();
 
             EmbedBuilder builder = new EmbedBuilder();
             builder.setThumbnail(member.getUser().getAvatarUrl())
@@ -52,10 +47,10 @@ public class UserInfo extends ListenerAdapter
                     .addField("・Nickname", "" + member.getNickname(), false)
                     .addField("・ID", member.getUser().getId(), false)
                     .addField("・Status", member.getOnlineStatus().name(), false)
-                    .addField("・Account Created", formattedAccountCreationDate, false)
-                    .addField("・Server Join Date", formattedGuildJoinDate, false)
+                    .addField("・Account Created", member.getUser().getCreationTime().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
+                    .addField("・Server Join Date", member.getJoinDate().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
                     .addField("・Roles", "" + member.getRoles().size(), false)
-                    .setFooter(formattedCurrentTime, "https://i.imgur.com/WQSW5lV.png")
+                    .setFooter(Config.DATE_FORMAT.format(date), "https://i.imgur.com/WQSW5lV.png")
                     .setColor(0x00FF00);
 
             event.getChannel().sendTyping().queue();
