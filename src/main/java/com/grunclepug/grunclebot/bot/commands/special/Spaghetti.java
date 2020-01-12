@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.special;
 import com.grunclepug.grunclebot.bot.core.Config;
 
 import com.grunclepug.grunclebot.bot.errors.SFWChannelError;
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.reddit.RedditAPI;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -49,6 +50,7 @@ public class Spaghetti extends ListenerAdapter
             {
                 new SFWChannelError(event);
             }
+            BotLog.log(event);
         }
     }
 }

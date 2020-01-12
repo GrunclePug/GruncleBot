@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.general;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -36,7 +37,7 @@ public class Help extends ListenerAdapter
                             "\n**resources** | Check bot system resource usage" +
                             "\n**ping** | Checks the delay between you and the bot" +
                             "\n**afk** | set yourself as afk `" + Config.getPrefix() + "afk {reason}`" +
-                            "\n**invite** | gives you the link to invite the bot", false)
+                            "\n**invite** | givees you the link to invite the bot", false)
                 .addField("Utility Commands",
                       "**enlarge** | enlarge an emote (custom emotes only)" +
                             "\n**avatar** | get a users avatar", false)
@@ -83,6 +84,8 @@ public class Help extends ListenerAdapter
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();
             builder.clear();
+
+            BotLog.log(event);
         }
     }
 }

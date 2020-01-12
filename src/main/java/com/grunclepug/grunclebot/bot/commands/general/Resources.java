@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.general;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.sun.management.OperatingSystemMXBean;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
@@ -48,6 +49,8 @@ public class Resources extends ListenerAdapter
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();
             builder.clear();
+
+            BotLog.log(event);
         }
     }
 }

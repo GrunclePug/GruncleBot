@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.utility;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -43,6 +44,8 @@ public class Avatar extends ListenerAdapter
             event.getChannel().sendTyping().queue();
             event.getChannel().sendMessage(builder.build()).queue();
             builder.clear();
+
+            BotLog.log(event);
         }
     }
 }

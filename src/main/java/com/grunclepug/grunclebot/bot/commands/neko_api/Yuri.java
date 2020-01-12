@@ -2,6 +2,7 @@ package com.grunclepug.grunclebot.bot.commands.neko_api;
 
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.errors.SFWChannelError;
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.neko.NekoAPI;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -40,6 +41,7 @@ public class Yuri extends ListenerAdapter
             {
                 new SFWChannelError(event);
             }
+            BotLog.log(event);
         }
     }
 }

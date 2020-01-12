@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.staff;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
@@ -78,6 +79,7 @@ public class Role extends ListenerAdapter
                 event.getChannel().sendMessage(builder.build()).queue();
                 builder.clear();
             }
+            BotLog.log(event);
         }
     }
 }

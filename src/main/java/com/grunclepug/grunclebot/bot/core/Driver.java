@@ -8,6 +8,7 @@ import com.grunclepug.grunclebot.bot.commands.utility.*;
 import com.grunclepug.grunclebot.bot.commands.staff.*;
 import com.grunclepug.grunclebot.bot.commands.neko_api.*;
 import com.grunclepug.grunclebot.bot.commands.special.*;
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.music.Music;
 
 import net.dv8tion.jda.core.AccountType;
@@ -56,6 +57,9 @@ public class Driver
         jda = new JDABuilder(AccountType.BOT).setToken(Config.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setGame(Game.watching(Config.getPrefix() + "help | GrunclePug#7015"));
+
+        //Log
+        jda.addEventListener(new BotLog());
 
         //Owner
         jda.addEventListener(new GuildList());

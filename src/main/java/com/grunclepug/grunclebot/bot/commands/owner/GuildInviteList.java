@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.owner;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -78,6 +79,7 @@ public class GuildInviteList extends ListenerAdapter
                 event.getChannel().sendMessage(builder.build()).queue();
                 builder.clear();
             }
+            BotLog.log(event);
         }
     }
 }

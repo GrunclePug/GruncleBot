@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.commands.utility;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -40,6 +41,8 @@ public class Enlarge extends ListenerAdapter
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage("**invalid argument.** Usage: `" + Config.getPrefix() + "enlarge {emote}` (custom emotes only)").queue();
             }
+
+            BotLog.log(event);
         }
     }
 }

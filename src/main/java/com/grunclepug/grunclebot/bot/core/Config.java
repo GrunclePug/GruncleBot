@@ -3,6 +3,7 @@ package com.grunclepug.grunclebot.bot.core;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 
 /**
  * Config Class to read the config.txt
@@ -11,6 +12,7 @@ import java.io.FileReader;
  */
 public class Config
 {
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MMM dd, yyyy 'at' HH:mm");
     private static final String FILE_NAME = "src/main/resources/config.txt";
     private static String token;
     private static String prefix;

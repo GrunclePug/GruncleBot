@@ -2,6 +2,7 @@ package com.grunclepug.grunclebot.bot.commands.special;
 
 import com.grunclepug.grunclebot.bot.core.Config;
 
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.reddit.RedditAPI;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -41,6 +42,7 @@ public class JoJoMeme extends ListenerAdapter
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage("Invalid perms. `Attach Files`").queue();
             }
+            BotLog.log(event);
         }
     }
 }
