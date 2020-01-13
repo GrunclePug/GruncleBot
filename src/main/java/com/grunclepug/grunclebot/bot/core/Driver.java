@@ -10,6 +10,7 @@ import com.grunclepug.grunclebot.bot.commands.staff.*;
 import com.grunclepug.grunclebot.bot.commands.neko_api.*;
 import com.grunclepug.grunclebot.bot.commands.special.*;
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
+import com.grunclepug.grunclebot.bot.util.log.BugReport;
 import com.grunclepug.grunclebot.bot.util.music.Music;
 
 import net.dv8tion.jda.core.AccountType;
@@ -61,6 +62,7 @@ public class Driver
 
         //Log
         jda.addEventListener(new BotLog());
+        jda.addEventListener(new BugReport());
 
         //Owner
         jda.addEventListener(new GuildList());

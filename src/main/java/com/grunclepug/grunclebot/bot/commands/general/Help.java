@@ -39,7 +39,8 @@ public class Help extends ListenerAdapter
                             "\n**afk** | set yourself as afk `" + Config.getPrefix() + "afk {reason}`" +
                             "\n**invite** | givees you the link to invite the bot", false)
                 .addField("Utility Commands",
-                      "**enlarge** | enlarge an emote (custom emotes only)" +
+                      "**bugreport** | send a bug report" +
+                            "\n**enlarge** | enlarge an emote (custom emotes only)" +
                             "\n**avatar** | get a users avatar", false)
                 .addField("Fun Commands",
                       "**randomcase** | convert user input to random upper/lower case" +
