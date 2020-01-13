@@ -82,6 +82,7 @@ public class Driver
         jda.addEventListener(new RandomCase());
 
         //Utility
+        jda.addEventListener(new RandomColor());
         jda.addEventListener(new Avatar());
         jda.addEventListener(new Enlarge());
 

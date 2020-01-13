@@ -41,6 +41,7 @@ public class Help extends ListenerAdapter
                 .addField("Utility Commands",
                       "**bugreport** | send a bug report" +
                             "\n**suggest** | suggest a feature to be added" +
+                            "\n**randomcolor** | return a random color hex code" +
                             "\n**enlarge** | enlarge an emote (custom emotes only)" +
                             "\n**avatar** | get a users avatar", false)
                 .addField("Fun Commands",
