@@ -40,6 +40,7 @@ public class Help extends ListenerAdapter
                             "\n**invite** | givees you the link to invite the bot", false)
                 .addField("Utility Commands",
                       "**bugreport** | send a bug report" +
+                            "\n**suggest** | suggest a feature to be added" +
                             "\n**enlarge** | enlarge an emote (custom emotes only)" +
                             "\n**avatar** | get a users avatar", false)
                 .addField("Fun Commands",
