@@ -69,7 +69,11 @@ public class Music extends ListenerAdapter
     public void onMessageReceived(MessageReceivedEvent event)
     {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        channel = event.getMember().getVoiceState().getChannel();
+        try {
+            channel = event.getMember().getVoiceState().getChannel();
+        } catch (Exception e) {
+            // stfu
+        }
 
         String song = null;
 

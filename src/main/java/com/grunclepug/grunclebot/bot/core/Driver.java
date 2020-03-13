@@ -54,7 +54,6 @@ public class Driver
     {
         Config.readFile();
 
-        System.out.println(Config.getToken());
         jda = new JDABuilder(AccountType.BOT).setToken(Config.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.getPresence().setGame(Game.watching(Config.getPrefix() + "help | GrunclePug#7015"));
@@ -67,6 +66,7 @@ public class Driver
         //Owner
         jda.addEventListener(new GuildList());
         jda.addEventListener(new GuildInviteList());
+        jda.addEventListener(new Resolve());
 
         //General Purpose
         jda.addEventListener(new Help());

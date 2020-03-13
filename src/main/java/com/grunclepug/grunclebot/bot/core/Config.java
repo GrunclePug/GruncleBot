@@ -28,8 +28,6 @@ public class Config
     {
         try
         {
-            File f = new File("honk.txt");
-            System.out.println(f.getAbsolutePath());
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
             token = br.readLine().substring(6);
             prefix = br.readLine().substring(7);
