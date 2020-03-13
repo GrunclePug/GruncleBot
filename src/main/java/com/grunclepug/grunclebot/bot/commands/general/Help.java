@@ -61,7 +61,8 @@ public class Help extends ListenerAdapter
                             "\n**ban** | ban a user `" + Config.getPrefix() + "ban {@user} {reason}`" +
                             "\n**kick** | kick a user `" + Config.getPrefix() + "kick {@user} {reason}`" +
                             "\n**role** | add/remove role from user `" + Config.getPrefix() + "role add {role} {@user}`" +
-                            "\n**massrole** | add/remove role from all users `" + Config.getPrefix() + "massrole add {role}`", false)
+                            "\n**massrole** | add/remove role from all users `" + Config.getPrefix() + "massrole add {role}`" +
+                            "\n**rolecolor** | change a roles color `" + Config.getPrefix() + "rolecolor {role} {color_code}`", false)
                 .addField("Image Commands | SFW",
                       "**neko** | Post a random neko pic" +
                             "\n**nekogif** | Post a random neko gif" +

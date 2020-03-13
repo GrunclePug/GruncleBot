@@ -95,6 +95,7 @@ public class Driver
         jda.addEventListener(new Ban());
         jda.addEventListener(new Role());
         jda.addEventListener(new MassRole());
+        jda.addEventListener(new RoleColor());
 
         //Neko API
         jda.addEventListener(new Neko());

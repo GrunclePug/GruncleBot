@@ -1,6 +1,7 @@
 package com.grunclepug.grunclebot.bot.commands.owner;
 
 import com.grunclepug.grunclebot.bot.core.Config;
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.log.BugReport;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
@@ -62,6 +63,7 @@ public class Resolve extends ListenerAdapter {
                             channel.sendMessage(builder.build()).queue();
                         });
                     }
+                    BotLog.log(event);
                 }
             }
         }
