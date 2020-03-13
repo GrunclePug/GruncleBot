@@ -6,10 +6,12 @@ import com.grunclepug.grunclebot.bot.core.Driver;
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,13 +37,38 @@ public class Purge extends ListenerAdapter
                 {
                     try
                     {
-                        List<Message> messages = event.getChannel().getHistory().retrievePast(Integer.parseInt(args[1])).complete();
+                        Member target = null;
+                        List<Message> messages = new ArrayList<>();
+                        if(args.length > 2 && event.getMessage().getMentionedMembers().get(0) != null) {
+                            target = event.getMessage().getMentionedMembers().get(0);
+                        }
+
+                        if(target != null) {
+
+                            List<Message> history = event.getChannel().getHistory().retrievePast(100).complete();
+                            for(Message m : history) {
+                                if(m.getAuthor().getId().equals(target.getUser().getId())) {
+                                    messages.add(m);
+                                    if(messages.size() == Integer.parseInt(args[2])) {
+                                        break;
+                                    }
+                                }
+                            }
+                        } else {
+                            messages = event.getChannel().getHistory().retrievePast(Integer.parseInt(args[1])).complete();
+                        }
+
                         event.getChannel().deleteMessages(messages).queue();
 
                         // Success
                         EmbedBuilder builder = new EmbedBuilder();
-                        builder.setTitle("✅ Successfully purged " + args[1] + " messages.")
-                                .setColor(0x22ff2a);
+
+                        if(target != null) {
+                            builder.setTitle("✅ Successfully purged " + args[2] + " messages by " + target.getEffectiveName());
+                        } else {
+                            builder.setTitle("✅ Successfully purged " + args[1] + " messages.");
+                        }
+                        builder.setColor(0x22ff2a);
 
                         event.getChannel().sendTyping().queue();
                         event.getChannel().sendMessage(builder.build()).queue();
