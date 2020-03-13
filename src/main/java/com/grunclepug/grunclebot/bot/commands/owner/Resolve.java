@@ -3,7 +3,6 @@ package com.grunclepug.grunclebot.bot.commands.owner;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.util.log.BugReport;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Emote;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
@@ -17,7 +16,7 @@ public class Resolve extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Config.getPrefix() + "resolve")) {
+        if (args[0].equalsIgnoreCase(Config.getPrefix() + "resolve") && event.getAuthor().getId().equals("247916497803018242")) {
             if (args.length != 2) {
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage("Usage: g!resolve {message_id}").queue();
