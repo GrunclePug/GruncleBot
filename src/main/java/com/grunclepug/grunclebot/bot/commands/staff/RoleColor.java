@@ -40,6 +40,7 @@ public class RoleColor extends ListenerAdapter {
                             event.getChannel().sendMessage(builder.build()).queue();
 
                         } catch(Exception e) {
+                            e.printStackTrace();
                             event.getChannel().sendTyping().queue();
                             event.getChannel().sendMessage("Invalid color code: " + args[2]).queue();
                         }
