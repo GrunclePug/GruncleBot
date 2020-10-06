@@ -68,6 +68,7 @@ public class Driver
         jda.addEventListener(new GuildInviteList());
         jda.addEventListener(new Resolve());
         jda.addEventListener(new GenerateInvite());
+        jda.addEventListener(new Broadcast());
 
         //General Purpose
         jda.addEventListener(new Help());
