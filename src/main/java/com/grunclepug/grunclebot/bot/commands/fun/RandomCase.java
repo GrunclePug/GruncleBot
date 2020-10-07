@@ -16,7 +16,7 @@ public class RandomCase extends ListenerAdapter
 
         if(args[0].equalsIgnoreCase(Config.getPrefix() + "randomcase"))
         {
-            if(args[1].startsWith(Config.getPrefix())) {
+            if(!args[1].toLowerCase().startsWith(Config.getPrefix())) {
                 Random rand = new Random();
                 String content = event.getMessage().getContentRaw().substring(args[0].length()).toLowerCase().trim();
                 char[] chars = content.toCharArray();
