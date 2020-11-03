@@ -4,12 +4,12 @@ import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 /**
  * Kick Command
@@ -71,7 +71,7 @@ public class Kick extends ListenerAdapter
                         event.getChannel().sendMessage(builder.build()).queue();
                         builder.clear();
 
-                        guild.getController().kick(target, reason).queue();
+                        guild.kick(target, reason).queue();
                     }
                     catch(Exception e)
                     {

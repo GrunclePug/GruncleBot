@@ -3,12 +3,12 @@ package com.grunclepug.grunclebot.bot.commands.owner;
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.log.BugReport;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageEmbed;
-import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 import java.util.Date;
@@ -22,7 +22,7 @@ public class Resolve extends ListenerAdapter {
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage("Usage: g!resolve {message_id}").queue();
             } else {
-                Message m = event.getJDA().getTextChannelById(BugReport.BUG_REPORT_CHANNEL).getMessageById(args[1]).complete();
+                Message m = event.getJDA().getTextChannelById(BugReport.BUG_REPORT_CHANNEL).retrieveMessageById(args[1]).complete();
 
                 if (m.getReactions().size() > 0) {
                     event.getChannel().sendTyping().queue();

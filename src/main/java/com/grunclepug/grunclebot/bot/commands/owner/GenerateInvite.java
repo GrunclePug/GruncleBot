@@ -4,11 +4,11 @@ import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class GenerateInvite extends ListenerAdapter {
                 EmbedBuilder builder = new EmbedBuilder();
                 builder.setTitle("Guild: " + guild.getName())
                         .setDescription("id: " + guild.getId())
-                        .addField("invite:", guild.getInvites().complete().get(0).getURL(), false)
+                        .addField("invite:", guild.retrieveInvites().complete().get(0).getUrl(), false)
                         .setColor(0xF9AF04);
 
                 event.getChannel().sendTyping().queue();

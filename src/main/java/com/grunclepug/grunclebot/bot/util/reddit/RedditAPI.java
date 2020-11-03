@@ -1,7 +1,7 @@
 package com.grunclepug.grunclebot.bot.util.reddit;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

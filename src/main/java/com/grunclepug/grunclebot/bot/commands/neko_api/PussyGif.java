@@ -5,9 +5,9 @@ import com.grunclepug.grunclebot.bot.errors.SFWChannelError;
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.neko.NekoAPI;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 /**
  * Pussy Gif Command

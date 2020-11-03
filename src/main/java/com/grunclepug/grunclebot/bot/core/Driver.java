@@ -10,13 +10,11 @@ import com.grunclepug.grunclebot.bot.commands.staff.*;
 import com.grunclepug.grunclebot.bot.commands.neko_api.*;
 import com.grunclepug.grunclebot.bot.commands.special.*;
 import com.grunclepug.grunclebot.bot.util.log.*;
-import com.grunclepug.grunclebot.bot.util.music.Music;
 
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
 
 import java.text.DecimalFormat;
 
@@ -54,9 +52,9 @@ public class Driver
     {
         Config.readFile();
 
-        jda = new JDABuilder(AccountType.BOT).setToken(Config.getToken()).build();
+        jda = JDABuilder.createDefault(Config.getToken()).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setGame(Game.watching(Config.getPrefix() + "help | GrunclePug#7015"));
+        jda.getPresence().setActivity(Activity.watching(Config.getPrefix() + "help | GrunclePug#7015"));
 
         //Log
         jda.addEventListener(new BotLog());
@@ -87,9 +85,6 @@ public class Driver
         jda.addEventListener(new RandomColor());
         jda.addEventListener(new Avatar());
         jda.addEventListener(new Enlarge());
-
-        //Music
-        jda.addEventListener(new Music());
 
         //Staff
         jda.addEventListener(new Purge());

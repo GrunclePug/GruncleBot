@@ -4,12 +4,12 @@ import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class Role extends ListenerAdapter {
             Member target = event.getMessage().getMentionedMembers().get(0);
             Guild guild = event.getMessage().getGuild();
             ArrayList<Member> members = new ArrayList<>(guild.getMembers());
-            net.dv8tion.jda.core.entities.Role role;
+            net.dv8tion.jda.api.entities.Role role;
             if (event.getMessage().getMentionedRoles().size() > 0 && event.getMessage().getMentionedRoles().get(0) != null) {
                 role = event.getMessage().getMentionedRoles().get(0);
             } else {
@@ -46,13 +46,13 @@ public class Role extends ListenerAdapter {
                 if (member.getRoles().get(0).canInteract(role)) {
                     if (args[1].equalsIgnoreCase("add")) {
                         if (!target.getRoles().contains(role)) {
-                            guild.getController().addSingleRoleToMember(target, role).queue();
+                            guild.addRoleToMember(target, role).queue();
                         }
                         event.getChannel().sendTyping().queue();
                         event.getChannel().sendMessage("Adding `" + role.getName() + "` to **" + target.getEffectiveName() + "**.").queue();
                     } else if (args[1].equalsIgnoreCase("remove")) {
                         if (target.getRoles().contains(role)) {
-                            guild.getController().removeSingleRoleFromMember(target, role).queue();
+                            guild.removeRoleFromMember(target, role).queue();
                         }
                         event.getChannel().sendTyping().queue();
                         event.getChannel().sendMessage("Removing `" + role.getName() + "` from **" + target.getEffectiveName() + "**.").queue();

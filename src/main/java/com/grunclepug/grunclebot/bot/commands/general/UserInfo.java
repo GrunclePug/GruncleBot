@@ -3,10 +3,10 @@ package com.grunclepug.grunclebot.bot.commands.general;
 import com.grunclepug.grunclebot.bot.core.Config;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -47,8 +47,8 @@ public class UserInfo extends ListenerAdapter
                     .addField("・Nickname", "" + member.getNickname(), false)
                     .addField("・ID", member.getUser().getId(), false)
                     .addField("・Status", member.getOnlineStatus().name(), false)
-                    .addField("・Account Created", member.getUser().getCreationTime().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
-                    .addField("・Server Join Date", member.getJoinDate().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
+                    .addField("・Account Created", member.getUser().getTimeCreated().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
+                    .addField("・Server Join Date", member.getTimeJoined().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), false)
                     .addField("・Roles", "" + member.getRoles().size(), false)
                     .setFooter(Config.DATE_FORMAT.format(date), "https://i.imgur.com/WQSW5lV.png")
                     .setColor(0x00FF00);

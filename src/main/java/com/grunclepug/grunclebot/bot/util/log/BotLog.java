@@ -2,16 +2,16 @@ package com.grunclepug.grunclebot.bot.util.log;
 
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.guild.*;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberRoleAddEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberRoleRemoveEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageDeleteEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageUpdateEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.guild.*;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleAddEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleRemoveEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageDeleteEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageUpdateEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
@@ -73,7 +73,7 @@ public class BotLog extends ListenerAdapter
 
             builder.setTitle("__Member Joined__")
                     .addField("User", e.getUser().getAsMention() + "\n" + e.getUser().getId(), true)
-                    .addField("Account Age", e.getUser().getCreationTime().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), true)
+                    .addField("Account Age", e.getUser().getTimeCreated().format(DateTimeFormatter.ofPattern("MMM dd, yyyy 'at' HH:mm")), true)
                     .addField("Guild", e.getGuild().getName() + "\n" + e.getGuild().getId(), true)
                     .addField("Join Date", Config.DATE_FORMAT.format(date), false)
                     .addField("Members", "" + e.getGuild().getMembers().size(), true)
@@ -101,7 +101,7 @@ public class BotLog extends ListenerAdapter
             builder.setTitle("__Member Banned__")
                     .addField("User", e.getUser().getAsMention() + "\n" + e.getUser().getId(), true)
                     .addField("Guild", e.getGuild().getName() + "\n" + e.getGuild().getId(), true)
-                    .addField("Reason", e.getGuild().getBan(e.getUser()).complete().getReason(), false)
+                    .addField("Reason", e.getGuild().retrieveBan(e.getUser()).complete().getReason(), false)
                     .setColor(Color.RED.brighter())
                     .setFooter(Config.DATE_FORMAT.format(date), "https://i.imgur.com/mK2zlbr.png");
         }

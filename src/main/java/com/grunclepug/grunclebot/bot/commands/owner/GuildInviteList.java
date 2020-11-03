@@ -4,11 +4,11 @@ import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.core.Driver;
 
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class GuildInviteList extends ListenerAdapter
                 String inv = "not available";
                 try
                 {
-                    inv = guilds.get(i).getInvites().complete().get(0).getCode();
+                    inv = guilds.get(i).retrieveInvites().complete().get(0).getCode();
                 }
                 catch(Exception e)
                 {

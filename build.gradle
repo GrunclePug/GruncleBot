@@ -6,7 +6,7 @@ plugins {
 mainClassName = 'com.grunclepug.grunclebot.bot.core.Driver'
 
 version '1.0'
-def jdaVersion = '3.8.3_463'
+def jdaVersion = '4.2.0_214'
 
 sourceCompatibility = targetCompatibility = 1.8
 

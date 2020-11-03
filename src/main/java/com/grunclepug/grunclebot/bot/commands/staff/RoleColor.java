@@ -2,12 +2,12 @@ package com.grunclepug.grunclebot.bot.commands.staff;
 
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.util.log.BotLog;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.role.update.RoleUpdateColorEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.role.update.RoleUpdateColorEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.beryx.awt.color.ColorFactory;
 
 import java.awt.*;
