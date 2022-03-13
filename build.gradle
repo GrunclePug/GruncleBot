@@ -1,0 +1,29 @@
+plugins {
+    id'application'
+    id'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+mainClassName = 'com.grunclepug.grunclebot.bot.core.Driver'
+
+version '1.0'
+def jdaVersion = '5.0.0-alpha.5'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { // on kotlin dsl use `maven("https://m2.dv8tion.net/releases")` instead
+        url "https://m2.dv8tion.net/releases"
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'org.beryx:awt-color-factory:1.0.1'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation("net.dv8tion:JDA:$jdaVersion")
+    implementation('com.google.code.gson:gson:2.9.0')
+    implementation('com.github.Doomsdayrs:Jikan4java:v2.0.0')
+}
+
+compileJava.options.encoding = 'UTF-8'
