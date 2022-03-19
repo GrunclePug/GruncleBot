@@ -13,6 +13,9 @@ import com.grunclepug.grunclebot.bot.commands.neko_api.sfw.*;
 import com.grunclepug.grunclebot.bot.commands.neko_api.sfw.Cat;
 import com.grunclepug.grunclebot.bot.commands.neko_api.sfw.Dog;
 import com.grunclepug.grunclebot.bot.commands.neko_api.sfw.Goose;
+import com.grunclepug.grunclebot.bot.commands.osu.OsuSet;
+import com.grunclepug.grunclebot.bot.commands.osu.OsuTop;
+import com.grunclepug.grunclebot.bot.commands.osu.OsuUser;
 import com.grunclepug.grunclebot.bot.commands.owner.*;
 import com.grunclepug.grunclebot.bot.commands.fun.Roll;
 import com.grunclepug.grunclebot.bot.commands.special.reddit.JoJoMeme;
@@ -99,6 +102,11 @@ public class Driver {
         jda.addEventListener(new ServerInfo());
         jda.addEventListener(new UserInfo());
         jda.addEventListener(new Privacy());
+
+        // OSU
+        jda.addEventListener(new OsuSet());
+        jda.addEventListener(new OsuUser());
+        jda.addEventListener(new OsuTop());
 
         // FUN
         jda.addEventListener(new RandomCase());

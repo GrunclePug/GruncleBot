@@ -20,6 +20,7 @@ public class Config {
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MMM dd, yyyy 'at' HH:mm");
     public static final DecimalFormat DF_ONE_DECIMAL_POINT = new DecimalFormat("0.0");
     public static final DecimalFormat DF_TWO_DECIMAL_POINT = new DecimalFormat("0.00");
+    public static final DecimalFormat COMMA_NUMBER = new DecimalFormat("#,###");
 
     private static String token;
     private static String prefix;

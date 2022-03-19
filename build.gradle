@@ -24,6 +24,7 @@ dependencies {
     implementation("net.dv8tion:JDA:$jdaVersion")
     implementation('com.google.code.gson:gson:2.9.0')
     implementation('com.github.Doomsdayrs:Jikan4java:v2.0.0')
+    implementation('com.github.jamalvw:osu4j:2.0.1')
 }
 
 compileJava.options.encoding = 'UTF-8'

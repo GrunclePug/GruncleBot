@@ -54,6 +54,13 @@ public class CommandInfoLoader {
         commandInfos.add(new CommandInfo("why", "Fun", Config.getPrefix() + "why", "Why does this command even exist?"));
         commandInfos.add(new CommandInfo("roll", "Fun", Config.getPrefix() + "roll {sides (optional)}", "Roll a die (default is 6)"));
 
+        // Osu
+        commandInfos.add(new CommandInfo("osuset", "Osu", Config.getPrefix() + "osuset {osu username}", "Set your osu username"));
+        commandInfos.add(new CommandInfo("osu", "Osu", Config.getPrefix() + "osu {mode} {osu user}", "Get osu profile"));
+        commandInfos.add(new CommandInfo("osu", "Osu", Config.getPrefix() + "osu {mode (default: standard)}", "Get your osu profile if you have it set"));
+        commandInfos.add(new CommandInfo("osutop", "Osu", Config.getPrefix() + "osutop {mode} {osu user}", "Get osu top plays"));
+        commandInfos.add(new CommandInfo("osutop", "Osu", Config.getPrefix() + "osutop {mode (default: standard)}", "Get your osu top plays if you have username set"));
+
         // Special
         commandInfos.add(new CommandInfo("jojomeme", "Special", Config.getPrefix() + "jojomeme", "Post a Jojo's meme"));
         commandInfos.add(new CommandInfo("kon", "Special", Config.getPrefix() + "kon", "Post a random K-On! photo from reddit"));
