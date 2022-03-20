@@ -33,7 +33,7 @@ public class BugReport extends ListenerAdapter {
                     .setFooter(Config.DATE_FORMAT.format(date), "https://i.imgur.com/mK2zlbr.png");
 
             event.getChannel().sendTyping().queue();
-            event.getChannel().sendMessage("<:greenTick:666069987689103370> Bug Report filed.").queue();
+            event.getChannel().sendMessage("<:greenTick:934590255590420552> Bug Report filed.").queue();
             Driver.jda.getTextChannelById(Config.getBugReportChannel()).sendMessageEmbeds(builder.build()).queue();
 
             BotLog.log(event);

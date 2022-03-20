@@ -33,7 +33,7 @@ public class Suggest extends ListenerAdapter {
                     .setFooter(Config.DATE_FORMAT.format(date), "https://i.imgur.com/mK2zlbr.png");
 
             event.getChannel().sendTyping().queue();
-            event.getChannel().sendMessage("<:greenTick:666069987689103370> Suggestion filed.").queue();
+            event.getChannel().sendMessage("<:greenTick:934590255590420552> Suggestion filed.").queue();
             Driver.jda.getTextChannelById(Config.getSuggestionChannel()).sendMessageEmbeds(builder.build()).queue();
 
             BotLog.log(event);

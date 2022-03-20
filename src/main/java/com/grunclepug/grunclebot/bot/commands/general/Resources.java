@@ -33,11 +33,11 @@ public class Resources extends ListenerAdapter {
             builder.setTitle(bot.getEffectiveName() + " System info")
                     .setThumbnail(bot.getUser().getAvatarUrl())
                     .addField("・CPU", "Usage: " + Config.DF_TWO_DECIMAL_POINT.format(os.getProcessCpuLoad() * 100) + "%" +
-                            "\nCores: " + cpuCoreCount +
-                            "\nThreads: " + cpuCoreCount * 2, false)
-                    .addField("・Memory", "Total: " + Config.DF_ONE_DECIMAL_POINT.format(systemMemory) + "MB (" + Config.DF_ONE_DECIMAL_POINT.format((double) systemMemory / 1024) + "GB)" +
-                            "\nUsage: " + Config.DF_ONE_DECIMAL_POINT.format(memoryUsage) + "MB (" + Config.DF_TWO_DECIMAL_POINT.format((double) memoryUsage / 1024) + "GB)", false)
-                    .addField("・Line Count", "" + LineCount.getLineCount(), false)
+                            "\nCores: " + cpuCoreCount / 2 +
+                            "\nThreads: " + cpuCoreCount, false)
+                    .addField("・Memory", "Total: " + Config.DF_ONE_DECIMAL_POINT_COMMAS.format(systemMemory) + "MB (" + Config.DF_ONE_DECIMAL_POINT.format((double) systemMemory / 1024) + "GB)" +
+                            "\nUsage: " + Config.DF_ONE_DECIMAL_POINT_COMMAS.format(memoryUsage) + "MB (" + Config.DF_TWO_DECIMAL_POINT.format((double) memoryUsage / 1024) + "GB)", false)
+                    .addField("・Line Count", "" + Config.COMMA_NUMBER.format(LineCount.getLineCount()), false)
                     .setFooter("Created by GrunclePug", "https://i.imgur.com/mK2zlbr.png")
                     .setColor(0xFF00FF);
 
