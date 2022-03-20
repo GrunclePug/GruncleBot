@@ -91,6 +91,8 @@ public class Driver {
         jda.addEventListener(new GuildInviteList());
         jda.addEventListener(new GuildList());
         jda.addEventListener(new Resolve());
+        jda.addEventListener(new ChannelLog());
+        jda.addEventListener(new GuildLog());
 
         // GENERAL PURPOSE
         jda.addEventListener(new Afk());
