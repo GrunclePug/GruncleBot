@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Afk command
@@ -39,7 +40,9 @@ public class Afk extends ListenerAdapter {
                         e.printStackTrace(System.err);
                     }
                     event.getChannel().sendTyping().queue();
-                    event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you have been removed from the afk list!").queue();
+                    event.getChannel().sendMessage(event.getMessage().getAuthor().getName() + ", you have been removed from the afk list!").queue(message -> {
+                        message.delete().queueAfter(5000, TimeUnit.MILLISECONDS);
+                    });
                     break;
                 }
             }
