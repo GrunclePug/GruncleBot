@@ -70,9 +70,9 @@ public class Driver {
         Config.readFile();
 
         jda = JDABuilder.createDefault(Config.getToken())
-                .enableCache(CacheFlag.ACTIVITY)
-                .setMemberCachePolicy(MemberCachePolicy.ALL)
-                .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_INVITES, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
+                //.enableCache(CacheFlag.ACTIVITY)
+                //.setMemberCachePolicy(MemberCachePolicy.ALL)
+                //.enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_INVITES, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
                 .build();
 
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
