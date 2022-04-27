@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.grunclepug.grunclebot.bot.commands.general.Afk;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -28,7 +25,8 @@ public class FileInteraction {
      */
     public static ArrayList<User> readFile(String fileName) throws IOException {
         Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get(Afk.AFK_LOG_FILE));
+        // Reader reader = Files.newBufferedReader(Paths.get(Afk.AFK_LOG_FILE)); Old way, having encoding issues
+        Reader reader = new BufferedReader(new InputStreamReader(new FileInputStream(Paths.get(Afk.AFK_LOG_FILE).toString()),"utf-8"));
         ArrayList<User> users = gson.fromJson(reader, new TypeToken<List<User>>(){}.getType());
 
         return users;
