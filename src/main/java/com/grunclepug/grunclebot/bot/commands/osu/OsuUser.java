@@ -2,6 +2,7 @@ package com.grunclepug.grunclebot.bot.commands.osu;
 
 import com.grunclepug.grunclebot.bot.core.Config;
 import com.grunclepug.grunclebot.bot.util.api.OsuAPI;
+import com.grunclepug.grunclebot.bot.util.log.BotLog;
 import com.grunclepug.grunclebot.bot.util.osu.FileInteraction;
 import com.grunclepug.grunclebot.bot.util.osu.User;
 import com.oopsjpeg.osu4j.GameMode;
@@ -67,14 +68,18 @@ public class OsuUser extends ListenerAdapter {
             switch(mode.toUpperCase()) {
                 case "STANDARD":
                 case "STD":
+                case "S":
                     gameMode = OsuAPI.STANDARD;
                     break;
+                case "M":
                 case "MANIA":
                     gameMode = OsuAPI.MANIA;
                     break;
+                case "T":
                 case "TAIKO":
                     gameMode = OsuAPI.TAIKO;
                     break;
+                case "C":
                 case "CATCH":
                 case "CTB":
                     gameMode = OsuAPI.CATCH;
@@ -89,8 +94,14 @@ public class OsuUser extends ListenerAdapter {
                 try {
                     if(userID != null) {
                         builder = OsuAPI.getUser(userID, gameMode);
-                    } else {
+                    } else if(user != null && user.length() > 0) {
                         builder = OsuAPI.getUser(user, gameMode);
+                    } else {
+                        // Usage
+                        builder = new EmbedBuilder();
+                        builder.setTitle("You need to set your osu username first!")
+                                .setDescription("Usage: `" + Config.getPrefix() + "osuset {osu username}`")
+                                .setColor(0xff3923);
                     }
 
                 } catch (OsuAPIException e) {
@@ -102,7 +113,7 @@ public class OsuUser extends ListenerAdapter {
                     event.getChannel().sendMessageEmbeds(builder.build()).queue();
                 }
             }
-
+            BotLog.log(event);
         }
     }
 }
