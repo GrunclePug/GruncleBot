@@ -9,7 +9,9 @@ pipeline {
         }
 
         stage("Deploy") {
-            sh 'java -jar build/libs/GruncleBot-1.0-all.jar'
+            steps {
+                sh 'java -jar build/libs/GruncleBot-1.0-all.jar'
+            }
         }
     }
 }
