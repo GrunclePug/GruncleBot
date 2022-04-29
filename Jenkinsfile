@@ -4,6 +4,9 @@ pipeline {
     stages {
         stage("Build") {
             steps {
+                configFileProvider(
+                    [configFile(fileId: 'config', variable: 'src/resources')]
+                ) {}
                 sh './gradlew clean build'
             }
         }
