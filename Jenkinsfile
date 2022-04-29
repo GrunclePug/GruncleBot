@@ -4,13 +4,16 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                echo 'building'
+                echo 'Building...'
+                sh 'gradle build'
+                sh 'docker build -t grunclepug/grunclebot:latest .'
             }
         }
 
         stage("deploy") {
             steps {
-                echo 'deploying'
+                echo 'Deploying...'
+                sh 'docker run -d -v ./src/main/resources:/src/main/resources grunclepug/grunclebot:latest'
             }
         }
     }
