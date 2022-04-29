@@ -5,7 +5,7 @@ pipeline {
         stage("build") {
             steps {
                 echo 'Building...'
-                sh 'gradle build'
+                sh './gradlew clean build'
                 sh 'docker build -t grunclepug/grunclebot:latest .'
             }
         }
