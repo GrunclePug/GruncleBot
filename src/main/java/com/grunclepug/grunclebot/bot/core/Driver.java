@@ -95,6 +95,7 @@ public class Driver {
         jda.addEventListener(new GuildLog());
         jda.addEventListener(new GetImage());
         jda.addEventListener(new GetImages());
+        jda.addEventListener(new Stop());
 
         // GENERAL PURPOSE
         jda.addEventListener(new Afk());
