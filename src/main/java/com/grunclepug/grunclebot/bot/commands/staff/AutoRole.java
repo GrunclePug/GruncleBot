@@ -46,8 +46,7 @@ public class AutoRole extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-
-        // g!autorole add/remove @role
+        
         if(args[0].equalsIgnoreCase(Config.getPrefix() + "autorole")) {
             if(event.getMember().hasPermission(Permission.MANAGE_ROLES)) {
                 net.dv8tion.jda.api.entities.Role role = null;
@@ -75,11 +74,11 @@ public class AutoRole extends ListenerAdapter {
                                     switch(args[1].trim().toUpperCase()) {
                                         case "ADD":
                                             FileInteraction.updateAutoRoleFile(args[2].trim(), guild.getId(), true);
-                                            event.getChannel().sendMessage("Enabling AutoRole for `" + role.getName()).queue();
+                                            event.getChannel().sendMessage("Enabling AutoRole for `" + role.getName() + "`").queue();
                                             break;
                                         case "REMOVE":
                                             FileInteraction.updateAutoRoleFile(args[2].trim(), guild.getId(), false);
-                                            event.getChannel().sendMessage("Disabling AutoRole for `" + role.getName()).queue();
+                                            event.getChannel().sendMessage("Disabling AutoRole for `" + role.getName() + "`").queue();
                                             break;
                                         default:
                                             event.getChannel().sendTyping().queue();
