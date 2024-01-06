@@ -75,9 +75,11 @@ public class AutoRole extends ListenerAdapter {
                                     switch(args[1].trim().toUpperCase()) {
                                         case "ADD":
                                             FileInteraction.updateAutoRoleFile(args[2].trim(), guild.getId(), true);
+                                            event.getChannel().sendMessage("Enabling AutoRole for `" + role.getName()).queue();
                                             break;
                                         case "REMOVE":
                                             FileInteraction.updateAutoRoleFile(args[2].trim(), guild.getId(), false);
+                                            event.getChannel().sendMessage("Disabling AutoRole for `" + role.getName()).queue();
                                             break;
                                         default:
                                             event.getChannel().sendTyping().queue();
