@@ -42,6 +42,7 @@ public class CommandInfoLoader {
         commandInfos.add(new CommandInfo("purge", "Staff", Config.getPrefix() + "purge {@user (optional)} {# of messages (max 100)}", "Purge x messages"));
         commandInfos.add(new CommandInfo("role", "Staff", Config.getPrefix() + "role add/remove {@role} {@user}", "Add or remove role from user"));
         commandInfos.add(new CommandInfo("rolecolor", "Staff", Config.getPrefix() + "rolecolor {@role} {color code}", "Change role color"));
+        commandInfos.add(new CommandInfo("autorole", "Staff", Config.getPrefix() + "autorole add/remove {@role}", "Auto add role on member join"));
 
         // Fun
         commandInfos.add(new CommandInfo("randomcase", "Fun", Config.getPrefix() + "randomcase {text}", "Return input randomly cased"));

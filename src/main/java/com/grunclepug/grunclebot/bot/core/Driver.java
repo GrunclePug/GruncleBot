@@ -130,6 +130,7 @@ public class Driver {
         jda.addEventListener(new Purge());
         jda.addEventListener(new Role());
         jda.addEventListener(new RoleColor());
+        jda.addEventListener(new AutoRole());
 
         // NEKO API
         jda.addEventListener(new Cat());

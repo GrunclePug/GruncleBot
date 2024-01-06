@@ -1,13 +1,12 @@
 plugins {
     id'application'
-    id'com.github.johnrengelman.shadow' version '5.2.0'
+    id'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
 }
 
 version '1.0'
 mainClassName = 'com.grunclepug.grunclebot.bot.core.Driver'
 def jdaVersion = '5.0.0-alpha.5'
-sourceCompatibility = targetCompatibility = 1.8
 
 jar {
     manifest {
@@ -23,7 +22,7 @@ repositories {
 
 dependencies {
     implementation 'org.beryx:awt-color-factory:1.0.2'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'commons-io', name: 'commons-io', version: '20030203.000550'
     implementation("net.dv8tion:JDA:$jdaVersion")
     implementation('com.google.code.gson:gson:2.9.0')
     implementation('com.github.Doomsdayrs:Jikan4java:v2.0.0')
