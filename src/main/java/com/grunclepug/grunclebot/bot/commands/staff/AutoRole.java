@@ -15,17 +15,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 
  /**
- * Role Command
+ * AutoRole Command
+  * Automatically adds a role to a member upon joining the guild
  * @author GrunclePug
  */
 public class AutoRole extends ListenerAdapter {
+    // Listen for GuildMemberJoinEvents
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
         ArrayList<com.grunclepug.grunclebot.bot.util.autorole.Guild> guilds = null;
 
+        // Ensure joined user is not a bot
         if(!event.getUser().isBot()) {
             try {
-                guilds = com.grunclepug.grunclebot.bot.util.autorole.FileInteraction.readAutoRoleFile();
+                // Read AutoRole guilds file
+                guilds = FileInteraction.readAutoRoleFile();
             } catch (IOException e) {
                 e.printStackTrace(System.err);
             }
@@ -34,6 +38,7 @@ public class AutoRole extends ListenerAdapter {
         if(guilds != null) {
             for(int i = 0; i < guilds.size(); i++) {
                 if(guilds.get(i).getId().equalsIgnoreCase(event.getGuild().getId())) {
+                    // Get role from parsed config and apply it to member
                     Role role = event.getGuild().getRoleById(guilds.get(i).getRole());
                     if(!event.getMember().getRoles().contains(role)) {
                         event.getGuild().addRoleToMember(event.getMember(), role).queue();
@@ -43,15 +48,19 @@ public class AutoRole extends ListenerAdapter {
         }
     }
 
+    // Listen for MessageReceivedEvents
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        
+
+        // Check if message is command, and if it matches autorole command
         if(args[0].equalsIgnoreCase(Config.getPrefix() + "autorole")) {
+            // Ensure member issuing command has sufficient permissions
             if(event.getMember().hasPermission(Permission.MANAGE_ROLES)) {
                 net.dv8tion.jda.api.entities.Role role = null;
                 Guild guild = event.getGuild();
 
+                // Ensure correct argument count, determine how role was identified
                 if(args.length == 3) {
                     if(event.getMessage().getMentionedRoles().size() > 0 && event.getMessage().getMentionedRoles().get(0) != null) {
                         // Mentioned Role
@@ -67,6 +76,7 @@ public class AutoRole extends ListenerAdapter {
                         event.getChannel().sendMessage("Role `" + args[2] + "` not found").queue();
                     }
 
+                    // Assuming issuing user has permissions to interact with target role, add or remove it from the guild config
                     if(event.getMember().canInteract(role)) {
                         if (event.getGuild().getSelfMember().canInteract(role)) {
                             if(role != null) {
